@@ -1,3 +1,9 @@
+v5.8
+- fix issues in the triple ball n' chain, candle bg fix and line guide act as patches
+- fix issue with collectable on/off blocks and wall run
+- update Callisto to 0.2.15 and AddMusicK to 1.0.10
+- update UberASM retry to 0.6.0
+
 v5.7
 - retry indicator now as a sprite tile component for when the layer 3 HUD is hidden and can be toggled on with an UberASM object
 - some changes to sprite tiles were required for this
