@@ -1,9 +1,11 @@
 v5.8
 - fix issues in the triple ball n' chain, candle bg fix and line guide act as patches
 - fix issue with collectable on/off blocks and wall run
+- update block duplication fix patch to 1.6
 - update Callisto to 0.2.15 and AddMusicK to 1.0.10
-- rework global block graphics to avoid palette conflict with graphic resources
 - update UberASM retry to 0.6.0
+- rework global block graphics to avoid palette conflict with graphic resources
+- add basic autosave on overworld feature
 
 v5.7
 - retry indicator now as a sprite tile component for when the layer 3 HUD is hidden and can be toggled on with an UberASM object
