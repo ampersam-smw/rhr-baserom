@@ -21,6 +21,7 @@ endif
 !block_duplication_freeram                  = $13E6|!addr ; 1 byte
 !sprite_scroll_fix_displacement_freeram     = $1487|!addr ; 4 bytes
 !triangles_fix_freeram                      = $14BE|!addr ; 1 byte
+!auto_save_tile_check_freeram               = $14C1|!addr ; 1 byte
 !goal_point_reward_fix_freeram              = $15E8|!addr ; 1 byte
 !extended_nstl_freeram                      = $1869|!addr ; 2 bytes
 !screen_scrolling_pipes_freeram             = $18C5|!addr ; 5 bytes

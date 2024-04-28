@@ -19,6 +19,7 @@
     <li><a href="#sprite-status-bar">Sprite Status Bar</a></li>
     <li><a href="#clear-checkpoints">Clear Saved Checkpoints</a></li>
     <li><a href="#retry-indicator">Retry Indicator</a></li>
+    <li><a href="#ow-autosave">Autosave on Overworld</a></li>
 </ul>
 <hr>
 <h3 id="uberasm-objects">UberASM Objects</h3>
@@ -67,7 +68,9 @@
 <h4>Disabling</h4>
 <p>If you would like to disable this feature, you can open "GM0E.asm" in the <span class="dir">tools/uberasmtool/gamemode</span> folder and add a semi-colon as done to the line you see below.</p>
 <pre>
+; Gamemode 0E - Overworld
 main:
+    jsl ow_auto_save_main
     ;jsl retry_clear_saved_cp_main
     rtl
 </pre>
@@ -88,6 +91,17 @@ main:
 <h4>Configuring</h4>
 <p>This feature has a number of configuration options, if you would like to change how it displays you can edit the "retry_indicator.asm" in the <span class="dir">tools/uberasmtool/library folder</span>.</p>
 <small>Found in version 5.6 of baserom or later. Sprite tile indicator in version 5.7 or later.</small>
+<hr>
+<h3 id="ow-autosave">Autosave on Overworld</h3>
+<p>The baserom has a basic UberASM feature to autosave the game when you return to or move Mario on the overworld. If you would like to disable this feature, you can open "GM0E.asm" in the <span class="dir">tools/uberasmtool/gamemode</span> folder and add a semi-colon to the line you see below.</p>
+<pre>
+; Gamemode 0E - Overworld
+main:
+    ;jsl ow_auto_save_main
+    jsl retry_clear_saved_cp_main
+    rtl
+</pre>
+<small>Found in version 5.8 of baserom or later.</small>
 </section>
 <hr>
 <a href="#" class="go-to-top"></a>
