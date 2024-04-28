@@ -38,21 +38,25 @@ incsrc "../../../shared/freeram.asm"
 !addr = $0000
 !sa1 = 0
 !gsu = 0
+!9E = $9E
 !E4 = $E4
 !D8 = $D8
 !14D4 = $14D4
-if read1($00FFD6) == $15
-	sfxrom ; sfxrom doesn't work because asar is drunk
-	!addr = $6000
-	!gsu = 1
-	!14D4 = $14D4|!addr
-elseif read1($00FFD5) == $23
+!bank = $800000
+
+if read1($00FFD5) == $23
+	if read1($00FFD7) == $0D ; full 6/8 mb sa-1 rom
+		fullsa1rom
+	else
 	sa1rom
+	endif
 	!addr = $6000
 	!sa1 = 1
+	!9E = $3200
 	!E4 = $322C
 	!D8 = $3216
 	!14D4 = $3258
+	!bank = $000000
 endif
 
 org $0192FC
@@ -65,6 +69,9 @@ org $0195A6
 
 org $0195B4
 	autoclean JML Add2toSpriteYPos
+
+org $0195E0
+	autoclean JML Add8toSpriteYPos
 
 freecode
 CodeStart:
@@ -110,11 +117,46 @@ endif
 	LDA !D8,x			;\ y position of block
 	CLC					;| add 02 to prevent duplicating blocks vertically,
 	ADC #$02			;| by making the high nybble increment if necessary
+	AND #$F0
 	STA $98
 	LDA.w !14D4,x
 	ADC #$00
 	STA $99
 
-	LDA #$0F
-	TRB $98
-	JML $0195BF
+	JML $0195BF|!bank
+
+
+
+; For this tweak:
+; ; fix glitch with blocks not activating when hit with thrown sprites
+; org $0195A5 : db $00
+;
+; another fix is necessary:
+; Fix similar to Add2toSpriteYPos for X interaction (after running Y interaction)
+; (it can happen that the block for X interaction is below the one for Y interaction, due to differing clipping offsets)
+; What happens:
+;  Object interaction runs, blocking is set to both X and Y (top)
+;  Add2toSpriteYPos sets $98 for Y clipping (SpriteObjClippingY+$03)
+;  $98 value is reused for X interaction, bounce sprite is spawned in wrong position, since SpriteObjClippingY+$01 != SpriteObjClippingY+03
+; n.b. 2 and 8 come from SpriteObjClippingY and are likely wrong for sprites without object clipping=0
+
+Add8toSpriteYPos:
+	LDA !9E,X					;$0195E0	||\
+	CMP.b #$0D					;$0195E2	||| If the sprite is touching the side of a block and is not a shell, then interact with that block.
+	; BCC CODE_0195E9			;$0195E4	|||
+	; JSR CODE_01999E			;$0195E6	||/
+	BCS +
+	JML $0195E9|!bank
++
+
+	LDA !D8,x					;\ y position of block
+	; CLC						;| add SpriteObjClippingY+$01
+	; n.b. carry is set here
+	ADC.b #$08-1				;| by making the high nybble increment if necessary
+	AND #$F0
+	STA $98
+	LDA.w !14D4,x
+	ADC #$00
+	STA $99
+
+	JML $0195E6|!bank
