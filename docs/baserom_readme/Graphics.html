@@ -22,7 +22,7 @@
     <li><a href="#alt-exgfx">Alternate ExGraphics</a></li>
     <li><a href="#palettes">Palettes</a></li>
     <ul>
-        <li><a href="#pink-berry">Pink Berry</a>, <a href="#poison-mushroom">Poison Mushroom</a>, <a href="#custom-blocks">Custom Blocks</a></li>
+        <li><a href="#poison-mushroom">Poison Mushroom</a>, <a href="#custom-blocks">Custom Blocks</a></li>
     </ul>
     <li><a href="#mario-gfxdma">Mario's 8x8 Graphics</a></li>
 </ul>
@@ -142,18 +142,12 @@
 <center><img  width="256" src="img/global_exanimation_frames.png" alt="Preview of the contents of ExGraphic ExGFX61.bin used for global ExAnimation" title="Preview of the contents of ExGraphic ExGFX61.bin used for global ExAnimation"></center>
 <hr>
 <h3 id="palettes">Palettes</h3>
-<p>For the most part the baserom doesn't touch the palettes of the Vanilla game, however the palette row for the Pink Berry (object 1E) has been changed to row <code>5</code> from row <code>3</code> so it will appear blank in Lunar Magic.</p>
-<center><img src="img/pink-berry-palette.png" alt="Screenshot of the broken Pink Berry palette" title="Screenshot of the broken Pink Berry palette"></center>
-<p>This change was made to make some room for some a global colors in the Shared palette that is used by graphics for some of the custom blocks in the baserom.</p>
-<center><img width="288" alt="Screenshot of the edited Global Palette colors in the Palette Editor Window" title="Screenshot of the edited Global Palette colors in the Palette Editor Window" src="img/edited_shared-palette.png"></center>
-<h4 id="pink-berry">Pink Berry</h4>
-<p>The original Pink Berry's palette can be restored if you import the <span class="dir">resources/palettes/PinkBerry.pal</span> file, should you end up using them in your level(s).</p>
-<center><img width="288" src="img/pink-berry-imported-palette.png" alt="Screenshot of the fixed Pink Berry colors in the Palette Editor Window" title="Screenshot of the fixed Pink Berry colors in the Palette Editor Window"></center>
 <h4 id="poison-mushroom">Poison Mushroom</h4>
 <p>The Poison mushroom is the only sprite in the baserom using a custom palette&ndash;palette row <code>A</code> for the hurt mushroom and row <code>B</code> for the kill variety&ndash;you can import it from <span class="dir">resources/palettes/PoisonMushroom.pal</span> to use in your level(s).</p>
-<center><img width="288" src="img/poison-mushroom-palette.png" alt="Screenshot of the Poison Mushroom colors in the Palette Editor Window" title="Screenshot of the Poison Mushroom colors in the Palette Editor Window"></center>
+<center><img width="288" src="img/palette_poison_mushroom.png" alt="Screenshot of the Poison Mushroom colors in the Palette Editor Window" title="Screenshot of the Poison Mushroom colors in the Palette Editor Window"></center>
 <h4 id="custom-blocks">Custom Blocks</h4>
-<p>If you happen to overwrite or lose the palette for the custom blocks mentioned above, you can re-import it from <span class="dir">resources/palettes/CustomBlocks.pal</span class="dir"> to use in your level(s).</p>
+<p>Some of the global custom block graphics (one-ways, death blocks, etc.) use palette row <code>7</code> for their graphics. If you need to use it in your level(s) you can import <span class="dir">resources/palettes/CustomBlocks.pal</span class="dir">.</p>
+<center><img width="288" src="img/palette_custom_blocks.png" alt="Screenshot of the custom block colors in the Palette Editor Window" title="Screenshot of the custom block colors in the Palette Editor Window"></center>
 <hr>
 <h3 id="mario-gfxdma">Mario's 8x8 Graphics</h3>
 <p>The baserom uses the <a href="https://smwc.me/s/26002" target="_blank">Mario's 8x8 Tiles DMA-er</a> patch to upload all of <a href="https://media.smwcentral.net/Diagrams/MarioExtendedTiles.png" target="_blank">Mario's 8x8 tiles</a> directly to memory (DMA), freeing up significant space in GFX00, which the baserom uses to have some tiles remapped into the global sprites space (<a href="#edited_GFX00">see above</a>).</p>
