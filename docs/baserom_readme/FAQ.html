@@ -20,6 +20,7 @@
 <li><a href="#hide-statusbar">How do I hide the status bar?</a></li>
 <li><a href="#fast-retry">Does this have Fast Retry?</a></li>
 <li><a href="#block-graphics">Why are my block graphics not looking right?</a></li>
+<li><a href="#turn-off-animation">Why are there weird tiles in the background?</a></li>
 <li><a href="#sa1">Is the baserom SA-1 compatible?</a></li>
 <li><a href="#conflicts">Help, Callisto is reporting conflict(s)!</a></li>
 <li><a href="#lunar-magic-restore-system-issue">Help, I'm seeing a "Restore System Issue"!</a></li>
@@ -71,6 +72,9 @@ init:
 <h3 id="block-graphics">Why are my block graphics not looking right?</h3>
 <center><img src="img/garbled_map16.png" title="Custom block tiles missing ExGraphics"></center>
 <p>Many of the custom global block in the baserom use ExGraphics, loading <code>E17</code> into the <b>FG2</b> slot in the Super GFX Bypass dialog will make the blocks appear as they are intended to.</p>
+<hr>
+<h3 id="turn-off-animation">Why are there garbage tiles in the background?</h3>
+<p>If you're using a background resource that uses slot <code>BG3</code> you may notice some of the tiles from the <a href="./ExAnimation.html">baserom's ExAnimations</a> in its tilemap, this is because the addresses at the end of that slot are being used as the destinations for those animations. To stop this from happening you can disable global animations in that level from the menu: "Level &rarr; Edit Animation Settings" and uncheck "Enable Lunar Magic's global animations".</p>
 <hr>
 <h3 id="sa1">Is the baserom SA-1 compatible?</h3>
 <p>Yes! The baserom's resources are all compatible with SA-1, but the baserom itself is configured to be FastROM by default. However to use SA-1 it only takes a couple steps to switch over to it:</p>
