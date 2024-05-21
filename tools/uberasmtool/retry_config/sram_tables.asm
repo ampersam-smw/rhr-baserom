@@ -30,8 +30,7 @@
 
 
 save:
-    dl !ram_checkpoint    : dw 192
-    ; Feel free to add your own stuff here.
+    dl !ram_checkpoint : dw 192
 
 if !DragonCoinSaving
     ; Dragon Coin saving
