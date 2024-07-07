@@ -10,6 +10,12 @@ AmperSam - Compilation and documentation
 -- Help & Testing--
 Fen, Fernap, Kevin, LouisDoucet, TheJavaBrew, underway
 
+-- Consistency Patches --
+Capespin Direction Consistency - Katun24
+Capespin Hitbox Consistency + Net Punching Hitbox Correction - Katun24, tjb0607
+Item Release Bulk Patch - betalogic - https://smwc.me/s/20836
+Player X Speed Fix 3.1 - HammerBrother, tjb0607 - https://smwc.me/s/33679
+
 -- Enhancement Patches --
 Bullet Bill Sound Effect on Extra Bit - AmperSam - https://smwc.me/s/34948
 Double Bounce Shell Palette - Fernap

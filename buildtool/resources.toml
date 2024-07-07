@@ -23,7 +23,7 @@ global_exanimation = "resources/global/exanimation.bps"
 patches = [
 	"resources/patches/consistency/capespin_direction.asm",
 	"resources/patches/consistency/capespin_net_hitbox.asm",
-	"resources/patches/consistency/item_release.asm",
+	"resources/patches/consistency/item_release_bulk.asm",
 	"resources/patches/consistency/player_xspeed_fix.asm",
 	"resources/patches/enhancements/bullet_bill_sfx_extra_bit.asm",
 	"resources/patches/enhancements/charles_remembers.asm",
