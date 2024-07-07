@@ -32,7 +32,6 @@
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E14C1">$14C1</a></td><td>1 byte</td><td>Used by simple auto save as a check.</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E15E8">$15E8</a></td><td>1 byte</td><td>Goal point reward fix patch.</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E1869">$1869</a></td><td>2 bytes</td><td>Extended No Sprite Tile Limits.</td></tr>
-<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E18C5">$18C5</a></td><td>5 bytes</td><td>Screen Scrolling Pipes.</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E18E6">$18E6</a></td><td>1 byte</td><td>Skull Raft Fix.</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E1923">$1923</a></td><td>1 byte</td><td>Cape spin consistency patch.</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E1DFD">$1DFD</a></td><td>1 byte</td><td>ON/OFF double-hit Fix.</td></tr>
@@ -41,8 +40,9 @@
 <p>These are resources that use more than a few bytes of FreeRAM to function, and are using "long" addresses in the <code>$7F****</code> block of memory.</p>
 <table border="1" class="full">
 <tr><th>Addresses*</th><th>Bytesize</th><th>Resource</th></tr>
-<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA400">$7FA400</a></td><td>13 bytes</td><td>UberASM Object System.</td></tr>
-<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA450">$7FA450</a></td><td>16 bytes</td><td>FreeRAM for feature toggles</td></tr>
+<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA400">$7FA400</a></td><td>16 bytes (reserved length)</td><td>FreeRAM for feature toggles.</td></tr>
+<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA410">$7FA410</a></td><td>16 bytes (reserved length)</td><td>UberASM Object System.</td></tr>
+<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA420">$7FA420</a></td><td>16 bytes (reserved length)</td><td>Screen Scrolling Pipes.</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA660">$7FA660</a></td><td>300 bytes</td><td>Dragon Coin Save.</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA960">$7FA960</a></td><td>8 bytes</td><td>Dragon Coin Save.</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FB000">$7FB000</a></td><td>2 to 1032 bytes</td><td>AddMusicK.</td></tr>
