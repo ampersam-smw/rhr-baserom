@@ -121,6 +121,13 @@ org $03C511 : db $0C
 ;; GFX Tweaks & Fixes ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;
 
+; fix diggin chuck's dislocated shoulder
+org $02CB91 : db $0C
+
+; Super Koopa (fix garbage tile)
+org $02ECA9 : db $01 ; Stomped 1, empty
+org $02ECAD : db $01 ; Stomped 2, empty
+
 ; reset animation frame counter at level load
 org $00A5FA : db $FF
 

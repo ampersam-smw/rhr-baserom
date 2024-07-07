@@ -1,3 +1,8 @@
+v5.9
+- moved screen scrolling pipe freeram to custom bank
+- swapped out baserom item release patch with betalogic version
+- added gfx tweak for Chuck shoulder and Super Koopa
+
 v5.8
 - fix issues in the triple ball n' chain, candle bg fix and line guide act as patches
 - fix issue with collectable on/off blocks and wall run
