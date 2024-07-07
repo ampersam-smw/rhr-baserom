@@ -1,21 +1,23 @@
-; GPS CUSTOM BLOCKS LIST --------------------------------------------;
+; GPS CUSTOM BLOCKS LIST --------------------------------------------
 ; Place your custom blocks in this list file like so:
 ;
-;    <map 16 tile number>:<block act-as> custom_block.asm
+;    <map16 tile number>:<block act-as> custom_block.asm
 ;
-; Be sure not to use a tile value already in use by the baserom.
-; -------------------------------------------------------------------;
+; Lines with a ; at the start are comments that are ignored by GPS
+; -------------------------------------------------------------------
 
 ; Add your blocks here
+; Be sure not to use a tile value already in use below
+
 ; 400:130 example.asm
 
 
-; BASEROM RESERVED BLOCKS BELOW -------------------------------------;
+; BASEROM RESERVED BLOCKS BELOW -------------------------------------
 ; The following blocks are largely on Pages 02 and 03 of Map16
 ; To be safe, start listing your additions on Page 04 (400).
-; -------------------------------------------------------------------;
+; -------------------------------------------------------------------
 
-; PAGE 02 OF MAP16 --------------------------------------------------;
+; PAGE 02 OF MAP16 --------------------------------------------------
 ; 200-20A - reserved for layer 3 Tide act-as feature
 ; 209-28F - occupied with vanilla Tiles
 
@@ -72,7 +74,7 @@
 ;02BE ; reserved by baserom
 ;02BF ; reserved by baserom
 
-; PAGE 03 OF MAP16 --------------------------------------------------;
+; PAGE 03 OF MAP16 --------------------------------------------------
 
 ; Screen Scrolling Pipes
 

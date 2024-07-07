@@ -2,6 +2,7 @@ v5.9
 - moved screen scrolling pipe freeram to custom bank
 - swapped out baserom item release patch with betalogic version
 - added gfx tweak for Chuck shoulder and Super Koopa
+- added list file format clarifications
 - update Callisto to v0.3.0
 
 v5.8

@@ -2,9 +2,11 @@
 ; - sprites get listed by their ID number and the config file name (either .cfg or .json).
 ; - custom normal sprites can start at ID 00 and go up to BF.
 ; - other sprite types have special considerations, see PIXI's readme for more details.
+; Lines with a ; at the start are comments that are ignored by PIXI
 
 ; Add your sprites here
 ; 00 example.cfg
 
 ; For use with the Donut block. If you remove or change this be sure to update the donut_lift.asm block
 A0 donut_sprite.cfg
+; Start listing your custom sprites at 00
