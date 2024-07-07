@@ -74,8 +74,8 @@ CustExObjCF:
 	AND #$07		; modulo 8 since we have 8 bits/flags per byte
 	TAY				; use result as loop variable
 	LDA ..masks,y	; load correct bit mask for corresponding bit
-    ORA !objectool_level_flags_freeram,x   ; account for previously set flags
-    STA !objectool_level_flags_freeram,x   ; store flag byte
+    ORA !objectool_level_flags_bank,x   ; account for previously set flags
+    STA !objectool_level_flags_bank,x   ; store flag byte
     RTS
 
 ..masks

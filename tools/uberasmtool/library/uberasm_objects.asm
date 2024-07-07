@@ -115,7 +115,7 @@ run_routines:
     tax
     lda ..masks,x   ; load correct mask for the bit
     ldx $03         ; load byte index from $03-$04
-    and !objectool_level_flags_freeram,x
+    and !objectool_level_flags_bank,x
     beq ..next      ; if bit not set skip the routine
 
     iny

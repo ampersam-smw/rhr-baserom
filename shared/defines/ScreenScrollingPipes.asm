@@ -5,11 +5,11 @@ incsrc "../freeram.asm"
 ; see library/ScreenScrollingPipes.asm in UberASMTool's folder
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-!Freeram_SSP_PipeDir      = !screen_scrolling_pipes_freeram
-!Freeram_SSP_PipeTmr      = !screen_scrolling_pipes_freeram+1
-!Freeram_SSP_EntrExtFlg   = !screen_scrolling_pipes_freeram+2
-!Freeram_SSP_CarrySpr     = !screen_scrolling_pipes_freeram+3
-!Freeram_BlockedStatBkp   = !screen_scrolling_pipes_freeram+4
+!Freeram_SSP_PipeDir      = !scroll_pipes_freeram_bank
+!Freeram_SSP_PipeTmr      = !scroll_pipes_freeram_bank+1
+!Freeram_SSP_EntrExtFlg   = !scroll_pipes_freeram_bank+2
+!Freeram_SSP_CarrySpr     = !scroll_pipes_freeram_bank+3
+!Freeram_BlockedStatBkp   = !scroll_pipes_freeram_bank+4
 
 ;Settings.
 !Setting_SSP_PipeDebug     = 0

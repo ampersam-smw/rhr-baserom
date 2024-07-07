@@ -4,13 +4,15 @@ includeonce
 
 ; Large blocks of ram
 if read1($00FFD5) == $23
-    !objectool_level_flags_freeram = $409400    ; 13 bytes
-    !toggles_freeram_bank = $409450             ; 16 bytes reserved, 6 used
-    !retry_freeram =  $40A400
+    !objectool_level_flags_bank             = $409400 ; 16 bytes reserved, 13 used
+    !toggles_freeram_bank                   = $409410 ; 16 bytes reserved, 7 used
+    !scroll_pipes_freeram_bank              = $409420 ; 16 bytes reserved, 5 bytes
+    !retry_freeram                          = $40A400 ; 230 (+ 4 * # of midways) bytes used
 else
-    !objectool_level_flags_freeram = $7FA400    ; 13 bytes
-    !toggles_freeram_bank = $7FA450             ; 16 bytes reserved, 6 used
-    !retry_freeram = $7FB400
+    !objectool_level_flags_bank             = $7FA400 ; 16 bytes reserved, 13 used
+    !toggles_freeram_bank                   = $7FA410 ; 16 bytes reserved, 7 used
+    !scroll_pipes_freeram_bank              = $7FA420 ; 16 bytes reserved, 5 bytes
+    !retry_freeram                          = $7FB400 ; 230 (+ 4 * # of midways) bytes used
 endif
 
 ; If you're looking to update or add freeram definitions do check the RAM Map first:
@@ -24,7 +26,6 @@ endif
 !auto_save_tile_check_freeram               = $14C1|!addr ; 1 byte
 !goal_point_reward_fix_freeram              = $15E8|!addr ; 1 byte
 !extended_nstl_freeram                      = $1869|!addr ; 2 bytes
-!screen_scrolling_pipes_freeram             = $18C5|!addr ; 5 bytes
 !skull_raft_fix_freeram                     = $18E6|!addr ; 1 byte
 !capespin_direction_freeram                 = $1923|!addr ; 1 byte
 !double_hit_fix_freeram                     = $1DFD|!addr ; 1 byte
