@@ -17,7 +17,7 @@ endmacro
 routines:
 .init
     %ObjectRoutine($99, no_horizontal_scroll)
-    %ObjectRoutine($9A, set_state_to_off)
+    ; %ObjectRoutine($9A, )
     %ObjectRoutine($9B, toggle_block_duplication)
     %ObjectRoutine($9C, toggle_status_bar)
     %ObjectRoutine($9D, toggle_lr_scroll)
@@ -39,6 +39,8 @@ routines:
     %ObjectRoutine($C6, start_on_blue_yoshi)
     %ObjectRoutine($C7, start_on_red_yoshi)
     %ObjectRoutine($C8, start_in_spin_jump)
+    %ObjectRoutine($C9, start_with_switch_off)
+    %ObjectRoutine($CA, start_with_switch_on)
 ..end
 
 .main
@@ -159,10 +161,7 @@ no_horizontal_scroll:
     stz $1411|!addr
     rts
 
-; Extended Object 9A - Set ON/OFF state to OFF
-set_state_to_off:
-    lda #$01 : sta $14AF|!addr
-    rts
+; Extended Object 9A
 
 ; Extended Object 9B - Toggle block duplication
 toggle_block_duplication:
@@ -327,7 +326,7 @@ start_with_fire_flower:
 
 ; Extended Object C3 - Start with Star Power
 start_with_star_power:
-	lda #$FF : sta $1490|!addr ; start the player with default star power timer
+    lda #$FF : sta $1490|!addr ; start the player with default star power timer
     rts
 
 ; Extended Object C4 - Start Mario on Green Yoshi
@@ -363,8 +362,16 @@ start_in_spin_jump:
     lda #$01 : sta $140D|!addr ; set spin jump flag
     rts
 
-; Extended Object C9
-; Extended Object CA
+; Extended Object C9 - Start with Switch OFF
+start_with_switch_off:
+    lda #$01 : sta $14AF|!addr ; set switch state to OFF
+    rts
+
+; Extended Object CA - Start with Switch ON
+start_with_switch_on:
+    stz $14AF|!addr ; set switch state to ON
+    rts
+
 ; Extended Object CB
 ; Extended Object CC
 ; Extended Object CD
