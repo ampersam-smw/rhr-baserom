@@ -1,5 +1,5 @@
 ;~@sa1
-;This is the top cap of a vertical 1-way pipe that
+;This is the bottom cap of a vertical 1-way pipe that
 ;is exit only for small mario.
 ;behaves $25 or $130
 
@@ -9,39 +9,49 @@ db $42
 JMP MarioBelow : JMP MarioAbove : JMP MarioSide : JMP return : JMP return : JMP return
 JMP return : JMP TopCorner : JMP BodyInside : JMP HeadInside
 
-MarioAbove:
+MarioBelow:
 TopCorner:
+MarioAbove:
 MarioSide:
 HeadInside:
 BodyInside:
-MarioBelow:
 	LDA !Freeram_SSP_PipeDir	;\do nothing if outside
-	AND.b #%00001111
-	BEQ return		;/when not in pipe
-	CMP #$01		;\exit if going up
-	BEQ exit		;|
-	CMP #$05		;|
-	BEQ exit		;/
+	AND.b #%00001111		;|
+	BEQ return			;/when not in pipe
+	CMP #$03			;\exit of going down
+	BEQ exit			;|
+	CMP #$07			;|
+	BEQ exit			;/
 within_pipe:
 	JSR passable
 	RTL
 exit:
+	REP #$20		;\Don't snap from very far away.
+	LDA $98			;|
+	AND #$FFF0		;|
+	SEC : SBC #$00010	;|
+	CMP $96			;|
+	SEP #$20		;|
+	BCS within_pipe		;/
+
 	LDA !Freeram_SSP_EntrExtFlg	;\do nothing if already exiting pipe
 	CMP #$02
 	BEQ within_pipe		;/
 	LDA #$02		;\set exiting flag
 	STA !Freeram_SSP_EntrExtFlg	;/
-	JSR center_horiz	;>center the player horizontally
-	JSR passable		;>be passable while exiting
-	LDA.b #!SSP_PipeTimer_Exit_Upwards_OffYoshi	;\Set timer.
-	STA !Freeram_SSP_PipeTmr			;/
+	JSR passable		;>become passable while exiting
+	LDA.b #!SSP_PipeTimer_Exit_Downwards_OffYoshi_SmallMario	;\Set timer.
+	STA !Freeram_SSP_PipeTmr					;/
 	LDA #$04		;\pipe sound
 	STA $1DF9|!addr		;/
 	STZ $7B			;\Prevent centering, and then displaced by xy speeds.
 	STZ $7D			;/
-	REP #$20		;\center vertically (for small/yoshi)
+	JSR center_horiz	;>center the player horizontally
+
+	REP #$20		;\center vertically
 	LDA $98			;|so it doesn't glitch if the bottom
 	AND #$FFF0		;|and top caps are touching each other.
+	SEC : SBC #$0010	;|
 	STA $96			;|
 	SEP #$20		;/
 return:
@@ -59,4 +69,4 @@ passable:
 	STA $1693|!addr		;/
 	RTS
 
-print "Top exit cap of a pipe for small mario."
+print "Bottom cap of a small vertical exit-only pipe."

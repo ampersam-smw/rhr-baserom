@@ -1,5 +1,5 @@
 ;~@sa1
-;this is the left bottom-half cap of a horizontal 1-way pipe, can
+;this is the right bottom-half cap of a horizontal 1-way pipe, can
 ;be used as a small pipe and normal-sized pipe cap.
 ;behaves $25 or $130
 
@@ -12,11 +12,11 @@ JMP return : JMP TopCorner : JMP BodyInside : JMP HeadInside
 
 MarioSide:
 	LDA !Freeram_SSP_PipeDir	;\for other offsets if mario
-	AND.b #%00001111		;|
-	BEQ return			;/not in pipe
-	CMP #$04			;\If mario is going outwards from the cap heading left,
+	AND.b #%00001111		;|not in pipe
+	BEQ return			;/
+	CMP #$02			;\if going right
 	BEQ exit			;|then exit
-	CMP #$08			;|
+	CMP #$06			;|
 	BEQ exit			;/
 TopCorner:
 MarioAbove:
@@ -30,19 +30,19 @@ exit:
 	REP #$20
 	LDA $9A			;\If mario is touching only the
 	AND #$FFF0		;|right side of cap, then don't do...
-	CLC			;\(this moves the boundary leftwards, due
-	ADC #$0004		;/to a bug with $9A doesn't update as fast as $94)
-	CMP $94			;|...anything except become passable.
+	SEC			;\(this moves the boundary leftwards, due
+	SBC #$0004		;/to a bug with $9A doesn't update as fast as $94)
+	CMP $94			;|...anything except becomme passable.
 	SEP #$20		;|(So it doesn't snap mario about #$10 pixels)
-	BMI within_pipe		;/
+	BPL within_pipe		;/
 	LDA !Freeram_SSP_EntrExtFlg	;\do nothing if already exiting pipe
 	CMP #$02			;|
 	BEQ within_pipe			;/
-	LDA #$02			;\set exiting flag
+	LDA #$02		;\set exiting flag
 	STA !Freeram_SSP_EntrExtFlg	;/
-	LDA !Freeram_SSP_PipeDir	;\Set his direction (Will only force the low nibble (bits 0-3) to have the value 8)
-	AND.b #%11110000		;|>Force low nibble clear
-	ORA.b #%00001000		;|>Force low nibble set
+	LDA !Freeram_SSP_PipeDir	;\Set his direction (Will only force the low nibble (bits 0-3) to have the value 6)
+	AND.b #%11110000		;|
+	ORA.b #%00000110		;|
 	STA !Freeram_SSP_PipeDir	;/
 	REP #$20			;\center horizontally so if left and right
 	LDA $9A				;|caps are touching each other won't exit
@@ -50,14 +50,15 @@ exit:
 	STA $94				;|
 	SEP #$20			;/
 	JSR center_vert			;>Center vertically as exiting horizontal pipe cap
-	LDA.b #!SSP_PipeTimer_Exit_Leftwards	;\set exit the pipe timer (same as smw's $7E0088)
+	LDA.b #!SSP_PipeTimer_Exit_Rightwards	;\set exit the pipe timer (same as smw's $7E0088)
 	STA !Freeram_SSP_PipeTmr		;/
 	JSR passable		;>become passable
 	LDA #$04		;\pipe sound
 	STA $1DF9|!addr		;/
 	STZ $7B			;\Prevent centering, and then displaced by xy speeds.
 	STZ $7D			;/
-	STZ $76			;>don't exit backwards.
+	LDA #$01		;\don't exit backwards.
+	STA $76			;/
 	%face_yoshi()
 return:
 	RTL
@@ -89,4 +90,4 @@ yoshi_center:
 	SEP #$20
 	RTS
 
-print "Bottom-left/left cap exit piece of horizontal pipe."
+print "Right-facing cap of a horizontal exit-only pipe, bottom tile."

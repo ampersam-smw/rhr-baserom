@@ -1,7 +1,7 @@
 ;~@sa1
-;this is the right bottom-half cap of a horizontal 1-way pipe, can
-;be used as a small pipe and normal-sized pipe cap.
-;behaves $25 or $130
+;this is the right cap of a horizontal 2-way pipe that is
+;only enterable as small mario (yoshi always not allowed).
+;behaves $130
 
 incsrc "../../../../shared/defines/ScreenScrollingPipes.asm"
 
@@ -11,13 +11,65 @@ JMP return : JMP TopCorner : JMP BodyInside : JMP HeadInside
 
 
 MarioSide:
-	LDA !Freeram_SSP_PipeDir	;\for other offsets if mario
-	AND.b #%00001111		;|not in pipe
-	BEQ return			;/
+	LDA !Freeram_SSP_PipeDir	;\If mario isn't in a pipe, the run the enter routine
+	AND.b #%00001111		;|
+	BEQ enter			;/
 	CMP #$02			;\if going right
 	BEQ exit			;|then exit
 	CMP #$06			;|
 	BEQ exit			;/
+	BRA within_pipe			;>Other directions, allow player to pass through without exiting.
+enter:
+	REP #$20		;\Prevent triggering the block from the left side (if you press left away from block)
+	LDA $9A			;|
+	AND #$FFF0		;|
+	CMP $94			;|
+	SEP #$20		;|
+	BPL +			;/
+	LDA $187A|!addr		;>no yoshi.
+	ORA $19			;>no powerup
+;	ORA $1471|!addr		;>so vertical centering code works
+	ORA $76			;>must face left
+	BEQ .SmallNoYoshi
+	+
+	RTL			;>otherwise return
+.SmallNoYoshi
+	LDA !Freeram_BlockedStatBkp		;\If you are not on ground, return
+	AND.b #%00000100		;|
+	BNE +
+	RTL			;/
+	+
+if !Setting_SSP_CarryAllowed == 0
+	LDA $1470|!addr		;\no carrying item
+	ORA $148F|!addr		;|
+	BNE Return0		;/
+endif
+	LDA $15			;\must press left
+	AND #$02		;|
+	BEQ Return0		;/
+	if !Setting_SSP_CarryAllowed != 0
+		LDA $1470|!addr			;\if mario not carrying anything
+		ORA $148F|!addr			;|then skip
+		BEQ not_carry			;/
+		LDA #$01			;\set flag
+		STA !Freeram_SSP_CarrySpr	;/
+	endif
+not_carry:
+	LDA.b #!SSP_PipeTimer_Enter_Leftwards	;\Set timer
+	STA !Freeram_SSP_PipeTmr		;/
+	LDA #$04		;\pipe sound
+	STA $1DF9|!addr		;/
+	STZ $7B			;\Prevent centering, and then displaced by xy speeds.
+	STZ $7D			;/
+	LDA !Freeram_SSP_PipeDir	;\Set his direction (Will only force the low nibble (bits 0-3) to have the value 8)
+	AND.b #%11110000		;|>Force low nibble clear
+	ORA.b #%00001000		;|>Force low nibble set
+	STA !Freeram_SSP_PipeDir	;/
+	LDA #$01		;\set flag to "entering"
+	STA !Freeram_SSP_EntrExtFlg	;/
+	JSR center_vert
+	JSR passable
+	RTL
 TopCorner:
 MarioAbove:
 HeadInside:
@@ -25,6 +77,7 @@ BodyInside:
 MarioBelow:
 within_pipe:
 	JSR passable
+	Return0:
 	RTL
 exit:
 	REP #$20
@@ -59,7 +112,6 @@ exit:
 	STZ $7D			;/
 	LDA #$01		;\don't exit backwards.
 	STA $76			;/
-	%face_yoshi()
 return:
 	RTL
 passable:
@@ -72,8 +124,8 @@ passable:
 solid_out:
 	RTS
 center_vert:
-	LDA $187A|!addr
-	BNE yoshi_center
+;	LDA $187A|!addr
+;	BNE yoshi_center
 	REP #$20
 	LDA $98
 	AND #$FFF0
@@ -81,13 +133,13 @@ center_vert:
 	STA $96
 	SEP #$20
 	RTS
-yoshi_center:
-	REP #$20
-	LDA $98
-	AND #$FFF0
-	SEC : SBC #$0021
-	STA $96
-	SEP #$20
-	RTS
+;yoshi_center:
+;	REP #$20
+;	LDA $98
+;	AND #$FFF0
+;	SEC : SBC #$0021
+;	STA $96
+;	SEP #$20
+;	RTS
 
-print "Bottom-right/right cap exit piece of horizontal pipe."
+print "Right-facing cap of a small horizontal exit-only pipe"

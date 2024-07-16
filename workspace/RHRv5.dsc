@@ -43,84 +43,84 @@
 2bb	0	Question block that always spawns a Silver P-Switch/POW.
 2bc	0	Question block that always spawns a Spring.
 2bd	0	Question block that always spawns Roulette power up.
-300	0	Top-left cap piece of vertical 2-way pipe.
-301	0	Top-right cap piece of vertical 2-way pipe.
-302	0	Part of pipe that is passable.
-303	0	Part of pipe that is passable.
-304	0	Part of pipe that is passable.
-305	0	Top cap of 2-way pipe for small mario.
-306	0	Top-left cap piece of vertical 2-way pipe.
-307	0	Top-right cap piece of vertical 2-way pipe.
-308	0	Part of pipe that is passable.
-309	0	Part of pipe that is passable.
-30a	0	Part of pipe that is passable.
-30b	0	Top cap of 2-way pipe for small mario.
-30c	0	Part of pipe that is passable.
-30d	0	Part of pipe that is passable.
-30e	0	Part of pipe that is passable.
-30f	0	Part of pipe that is passable.
-310	0	Part of pipe that is passable.
-311	0	Part of pipe that is passable.
-312	0	Bottom-left cap piece of horizontal 2-way pipe.
-313	0	Part of pipe that is passable.
-314	0	Bottom-right cap piece of horizontal 2-way pipe.
-315	0	Part of pipe that is passable.
-316	0	Part of pipe that is passable.
-317	0	Part of pipe that is passable.
-318	0	Bottom-left/left cap exit piece of horizontal pipe.
-319	0	Part of pipe that is passable.
-31a	0	Bottom-right cap piece of horizontal 2-way pipe.
-31b	0	Part of pipe that is passable.
+300	0	Top cap of vertical 2-way pipe, left side.
+301	0	Top cap of vertical 2-way pipe, right side.
+302	0	Part of pipe that Mario moves through.
+303	0	Part of pipe that Mario moves through.
+304	0	Part of pipe that Mario moves through.
+305	0	Bottom cap of a small vertical 2-way pipe.
+306	0	Top cap of vertical 2-way pipe, left side.
+307	0	Top cap of vertical 2-way pipe, right side.
+308	0	Part of pipe that Mario moves through.
+309	0	Part of pipe that Mario moves through.
+30a	0	Part of pipe that Mario moves through.
+30b	0	Bottom cap of a small vertical 2-way pipe.
+30c	0	Part of pipe that Mario moves through.
+30d	0	Part of pipe that Mario moves through.
+30e	0	Part of pipe that Mario moves through.
+30f	0	Part of pipe that Mario moves through.
+310	0	Part of pipe that Mario moves through.
+311	0	Part of pipe that Mario moves through.
+312	0	Left-facing cap of a horizontal two-way pipe, bottom tile.
+313	0	Part of pipe that Mario moves through.
+314	0	Right-facing cap of a horizontal two-way pipe, bottom tile.
+315	0	Part of pipe that Mario moves through.
+316	0	Part of pipe that Mario moves through.
+317	0	Part of pipe that Mario moves through.
+318	0	Left-facing cap of a horizontal exit-only pipe, bottom tile.
+319	0	Part of pipe that Mario moves through.
+31a	0	Right-facing cap of a horizontal two-way pipe, bottom tile.
+31b	0	Part of pipe that Mario moves through.
 31c	0	Changes the pipe direction from up to right or left to down.
-31d	0	Part of pipe that is passable.
-31e	0	Part of pipe that is passable.
+31d	0	Part of pipe that Mario moves through.
+31e	0	Part of pipe that Mario moves through.
 31f	0	Changes the pipe direction from right to down or up to left.
-320	0	Bottom-left cap piece of vertical 2-way pipe.
-321	0	Bottom-right cap piece of vertical 2-way pipe.
-322	0	Left cap piece of horizontal 2-way pipe for small mario.
-323	0	Part of pipe that is passable.
-324	0	Right cap piece of horizontal pipe for small mario.
-325	0	Bottom cap of 2-way pipe for small mario.
-326	0	Bottom-left exit cap piece of a vertical pipe.
-327	0	Bottom-right exit cap piece of a vertical pipe.
-328	0	Left cap piece of horizontal 2-way pipe for small mario.
-329	0	Part of pipe that is passable.
-32a	0	Bottom-right/right cap exit piece of horizontal pipe.
-32b	0	Bottom exit cap of a pipe for small mario.
-32c	0	Part of pipe that is passable.
-32d	0	Part of pipe that is passable.
-32e	0	Part of pipe that is passable.
-32f	0	Part of pipe that is passable.
-332	0	Part of pipe that is passable but it but clears held item.
-333	0	Part of pipe that is passable but it but clears held item.
-334	0	Part of pipe that is passable but it but clears held item.
-335	0	Part of pipe that is passable but it but clears held item.
-336	0	Top-left exit cap piece of a vertical pipe.
-337	0	Top-right exit cap piece of a vertical pipe.
-338	0	Part of pipe that is passable.
-339	0	Part of pipe that is passable.
-33a	0	Bottom-left/left cap exit piece of horizontal pipe.
-33b	0	Top exit cap of a pipe for small mario.
+320	0	Bottom cap of vertical 2-way pipe, left side.
+321	0	Bottom cap of vertical 2-way pipe, right side.
+322	0	Left-facing cap of a small horizontal exit-only pipe
+323	0	Part of pipe that Mario moves through.
+324	0	Right-facing cap of a small horizontal exit-only pipe
+325	0	Bottom cap of a small vertical 2-way pipe.
+326	0	Bottom cap of a vertical exit-only pipe, left side.
+327	0	Bottom cap of a vertical exit-only pipe, right side.
+328	0	Left-facing cap of a small horizontal exit-only pipe
+329	0	Part of pipe that Mario moves through.
+32a	0	Right-facing cap of a horizontal exit-only pipe, bottom tile.
+32b	0	Bottom cap of a small vertical exit-only pipe.
+32c	0	Part of pipe that Mario moves through.
+32d	0	Part of pipe that Mario moves through.
+32e	0	Part of pipe that Mario moves through.
+32f	0	Part of pipe that Mario moves through.
+332	0	Part of pipe that Mario moves through but it but clears held item.
+333	0	Part of pipe that Mario moves through but it but clears held item.
+334	0	Part of pipe that Mario moves through but it but clears held item.
+335	0	Part of pipe that Mario moves through but it but clears held item.
+336	0	Top cap of a vertical exit-only pipe, left side.
+337	0	Top cap of a vertical exit-only pipe, right side.
+338	0	Part of pipe that Mario moves through.
+339	0	Part of pipe that Mario moves through.
+33a	0	Left-facing cap of a horizontal exit-only pipe, bottom tile.
+33b	0	Top cap of a small vertical exit-only pipe.
 33c	0	Changes the pipe direction from left to up or down to right.
-33d	0	Part of pipe that is passable.
-33e	0	Part of pipe that is passable.
+33d	0	Part of pipe that Mario moves through.
+33e	0	Part of pipe that Mario moves through.
 33f	0	Changes the pipe direction from down to left or right to up.
-342	0	Part of pipe that is passable but it but clears held item.
-343	0	Part of pipe that is passable but it but clears held item.
-344	0	Part of pipe that is passable but it but clears held item.
-345	0	Part of pipe that is passable but it but clears held item.
-346	0	Bottom-left cap piece of vertical 2-way pipe.
-347	0	Bottom-right cap piece of vertical 2-way pipe.
-348	0	Bottom-left cap piece of horizontal 2-way pipe.
-349	0	Bottom-right/right cap exit piece of horizontal pipe.
-34a	0	Right cap piece of horizontal pipe for small mario.
-34b	0	Bottom cap of 2-way pipe for small mario.
+342	0	Part of pipe that Mario moves through but it but clears held item.
+343	0	Part of pipe that Mario moves through but it but clears held item.
+344	0	Part of pipe that Mario moves through but it but clears held item.
+345	0	Part of pipe that Mario moves through but it but clears held item.
+346	0	Bottom cap of vertical 2-way pipe, left side.
+347	0	Bottom cap of vertical 2-way pipe, right side.
+348	0	Left-facing cap of a horizontal two-way pipe, bottom tile.
+349	0	Right-facing cap of a horizontal exit-only pipe, bottom tile.
+34a	0	Right-facing cap of a small horizontal exit-only pipe
+34b	0	Bottom cap of a small vertical 2-way pipe.
 34c	0	Changes the pipe direction from up to right or left to down.
 34d	0	Changes the pipe direction from right to down or up to left.
 35c	0	Changes the pipe direction from left to up or down to right.
 35d	0	Changes the pipe direction from down to left or right to up.
-36f	0	Part of pipe that is passable.
-200 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+36f	0	Part of pipe that Mario moves through.
+00 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
 201 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
 202 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
 203 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.

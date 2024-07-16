@@ -10,8 +10,6 @@ db $42
 JMP MarioBelow : JMP MarioAbove : JMP MarioSide : JMP return : JMP return : JMP return
 JMP return : JMP TopCorner : JMP BodyInside : JMP HeadInside
 
-
-
 TopCorner:
 MarioAbove:
 MarioSide:
@@ -27,4 +25,4 @@ MarioBelow:
 return:
 	RTL
 
-print "Part of pipe that is passable."
+print "Part of pipe that Mario moves through."

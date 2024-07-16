@@ -153,4 +153,4 @@ center_vert:
 		RTS
 	endif
 
-print "Bottom-right cap piece of horizontal 2-way pipe."
+print "Right-facing cap of a horizontal two-way pipe, bottom tile."

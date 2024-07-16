@@ -1,6 +1,6 @@
 ;~@sa1
-;This is the top right-half cap of a vertical
-;1-way pipe (exit only).
+;This is the top left-half cap of a vertical 1-way pipe.
+;(this cap is exit only)
 ;behaves $25 or $130
 
 incsrc "../../../../shared/defines/ScreenScrollingPipes.asm"
@@ -16,8 +16,8 @@ HeadInside:
 BodyInside:
 MarioBelow:
 	LDA !Freeram_SSP_PipeDir	;\return for other offsets
-	AND.b #%00001111		;|when not in pipe
-	BEQ return			;/
+	AND.b #%00001111		;/
+	BEQ return		;/when not in pipe
 	CMP #$01		;\exit if going up
 	BEQ exit		;|
 	CMP #$05		;|
@@ -77,7 +77,7 @@ center_horiz:
 	REP #$20		;\center player to pipe horizontally.
 	LDA $9A			;|
 	AND #$FFF0		;|
-	SEC : SBC #$0008	;|
+	CLC : ADC #$0008	;|
 	STA $94			;|
 	SEP #$20		;/
 	RTS
@@ -97,4 +97,4 @@ passable:
 YoshiTimersExit:
 	db !SSP_PipeTimer_Exit_Upwards_OffYoshi,!SSP_PipeTimer_Exit_Upwards_OnYoshi,!SSP_PipeTimer_Exit_Upwards_OnYoshi		;>Timers: 1st one = on foot, 2nd and 3rd one = on yoshi
 
-print "Top-right exit cap piece of a vertical pipe."
+print "Top cap of a vertical exit-only pipe, left side."

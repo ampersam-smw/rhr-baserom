@@ -1,5 +1,5 @@
 ;~@sa1
-;This is the top left-half cap of a vertical two-way pipe.
+;This is the top right-half cap of a vertical two-way pipe.
 ;behaves $130
 
 incsrc "../../../../shared/defines/ScreenScrollingPipes.asm"
@@ -12,7 +12,7 @@ TopCorner:
 MarioAbove:			;>mario above only so he cannot enter edge and glitch
 	LDA !Freeram_SSP_PipeDir	;\if not in pipe
 	AND.b #%00001111		;/
-	BEQ enter		;/then enter
+	BEQ enter			;/then enter
 	if !Setting_SSP_CarryAllowed != 0
 		CMP #$01		;\exit if going up
 		BEQ exit		;|
@@ -44,9 +44,9 @@ enter:
 	AND #$FFF0		;|
 	CMP $94			;|
 	SEP #$20		;|
-	BCC .MarioOnRight	;>Branch out of bounds.
+	BCS .MarioOnLeft	;>Branch out of bounds.
 	RTL			;/
-.MarioOnRight
+.MarioOnLeft
 	LDA $15			;\must press down
 	AND #$04		;|
 	BNE .PressDown		;>Branch out of bounds.
@@ -125,7 +125,7 @@ exit:
 	CMP #$02
 	BEQ within_pipe		;/
 	LDA #$02		;\set exiting flag
-	STA !Freeram_SSP_EntrExtFlg	;/
+	STA !Freeram_SSP_EntrExtFlg		;/
 	JSR center_horiz	;>center the player horizontally
 	JSR passable		;>be passable while exiting
 
@@ -171,7 +171,7 @@ center_horiz:
 	REP #$20		;\center player to pipe horizontally.
 	LDA $9A			;|
 	AND #$FFF0		;|
-	CLC : ADC #$0008	;|
+	SEC : SBC #$0008	;|
 	STA $94			;|
 	SEP #$20		;/
 	RTS
@@ -187,4 +187,4 @@ passable:
 		db !SSP_PipeTimer_Enter_Downwards_OffYoshi,!SSP_PipeTimer_Enter_Downwards_OnYoshi,!SSP_PipeTimer_Enter_Downwards_OnYoshi
 	endif
 
-print "Top-left cap piece of vertical 2-way pipe."
+print "Top cap of vertical 2-way pipe, right side."
