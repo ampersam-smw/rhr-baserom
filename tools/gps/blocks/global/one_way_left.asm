@@ -61,4 +61,4 @@ solid:
 return:
 	RTL
 
-print "Solid to anything moving rightwards."
+print "Left-facing one-way; solid to anything moving rightwards."

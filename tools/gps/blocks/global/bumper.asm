@@ -65,4 +65,4 @@ endif
 Return:
     RTL
 
-print "A block that bounces throw blocks from the side."
+print "Bounces throw blocks from the side."

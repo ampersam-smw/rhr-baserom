@@ -13,4 +13,4 @@ Switch:
 Return:
     RTL
 
-print "Block that is passthrough when switch state is OFF and the Map16 act-as when ON."
+print "Passthrough when switch state is OFF and the Map16 act-as when ON."

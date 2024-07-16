@@ -1,4 +1,4 @@
-;A block that makes sprites and mario bounce with customizable height. this interacts with Mario when on/off is on.
+;makes sprites and mario bounce with customizable height. this interacts with Mario when on/off is on.
 ;act as 25 plz
 ;coded by dogemaster
 
@@ -28,4 +28,4 @@ Sprite:
 Return:
 	RTL
 
-print "A block that bounces sprites! But is passable by Mario."
+print "Bounces sprites! But is passable by Mario."

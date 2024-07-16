@@ -19,4 +19,4 @@ Shatter:
 Return:
 	rtl
 
-print "A block that shatters when a sprite is thrown at it."
+print "Shatters when a sprite is thrown at it."

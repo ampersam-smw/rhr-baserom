@@ -13,4 +13,4 @@ Mario:
 Return:
     RTL
 
-print "A block that is only passable by Mario. To sprites, it will obey the Act as setting."
+print "Only passable by Mario. To sprites, it will obey the act-as setting."

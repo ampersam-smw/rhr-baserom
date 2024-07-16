@@ -24,4 +24,4 @@ solid:
 return:
 	RTL
 
-print "Solid to anything moving upwards."
+print "Down-facing one-way; solid to anything moving upwards."

@@ -31,4 +31,4 @@ Teleport:
 Return:
 	RTL
 
-print "A block that will teleport Mario to set current screen exit."
+print "Will teleport Mario to the screen exit configured in Lunar Magic that this block is placed on."

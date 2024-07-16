@@ -1,26 +1,26 @@
-290	0	A block that is only passable by Mario. To sprites, it will obey the Act as setting.
-291	0	A block that is passable by sprites. To Mario, it will obey the Act as setting.
-292	0	A block that bounces sprites! But is passable by Mario.
-293	0	Solid to anything moving upwards.
-294	0	Solid to anything moving rightwards.
-295	0	Solid to anything moving leftwards.
-296	0	Block that is passthrough when switch state is ON and the Map16 act-as when OFF.
-297	0	Block that is passthrough when switch state is OFF and the Map16 act-as when ON.
-298	0	A block that shatters when a sprite is thrown at it.
-299	0	A block that kills sprites. Does not work for sprites that do not have object interaction.
+290	0	Only passable by Mario. To sprites, it will obey the act-as setting.
+291	0	Only passable by sprites. To Mario, it will obey the act-as setting.
+292	0	Bounces sprites! But is passable by Mario.
+293	0	Down-facing one-way; solid to anything moving upwards.
+294	0	Left-facing one-way; solid to anything moving rightwards.
+295	0	Right-facing one-way; solid to anything moving leftwards.
+296	0	Passthrough when switch state is ON and the Map16 act-as when OFF.
+297	0	Passthrough when switch state is OFF and the Map16 act-as when ON.
+298	0	Shatters when a sprite is thrown at it.
+299	0	Kills sprites. Does not work for sprites that do not have object interaction.
 29a	0	Block that kills the player (even on yoshi), is solid for sprites and kills on wall running.
 29b	0	Block that kills the player (even on yoshi), is passable for sprites and kills on wall running.
 29c	0	Makes Mario small, clears item box and removes balloon, flight, and slide states.
 29d	0	A Donut Lift, which will fall shortly after being stepped on.
-29e	0	Block with an endless supply of throwblocks.
+29e	0	A throw block with an endless supply.
 29f	0	A ledge vine that the player automatically hops above.
 2a0	0	A block that acts like a mid-air suspended Spiny.
 2a1	0	A block that acts like a stationary Swooper.
 2a2	0	Sets the switch state to ON when anything (incl. dead sprites) touches it.
 2a3	0	Sets the switch state to OFF when anything (incl. dead sprites) touches it.
-2a4	0	A block that will teleport Mario to set current screen exit.
+2a4	0	Will teleport Mario to the screen exit configured in Lunar Magic that this block is placed on.
 2a5	0	A single-use bounce block. Noteblock bounce height, doesn't negate spin
-2a6	0	A block that bounces throw blocks from the side.
+2a6	0	Bounces throw blocks from the side.
 2a7	0	A coin that changes the switch state to ON when collected.
 2a8	0	A coin that changes the switch state to OFF when collected.
 2aa	0	Scroll camera left. (Remove graphics in Map16 when finished.)

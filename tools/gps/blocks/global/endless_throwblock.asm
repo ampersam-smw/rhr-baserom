@@ -1,7 +1,7 @@
 ; act as 130
 db $37
 
-print "Block with an endless supply of throwblocks."
+print "A throw block with an endless supply."
 
 JMP Mario : JMP Mario : JMP Mario : JMP Return
 JMP Return : JMP Return : JMP Return : JMP Mario
