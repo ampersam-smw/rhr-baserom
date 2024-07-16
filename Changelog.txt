@@ -1,9 +1,10 @@
 v5.9
 - moved screen scrolling pipe freeram to custom bank
 - swapped out baserom item release patch with betalogic version
+- fixed uberasm objects being run in the wrong time
 - added gfx tweak for Chuck shoulder and Super Koopa
 - added list file format clarifications
-- update Callisto to v0.3.0
+- update Callisto to v0.4.0
 
 v5.8
 - fix issues in the triple ball n' chain, candle bg fix and line guide act as patches
