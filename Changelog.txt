@@ -3,7 +3,8 @@ v5.9
 - swapped out baserom item release patch with betalogic version
 - fixed uberasm objects being run in the wrong time
 - fix a bunch of inconsistent logic in the ON/OFF blocks
-- clean up block descriptions
+- clean up and update block descriptions for clarity
+- reorganize screen scrolling pipe block tiles
 - added gfx tweak for Chuck shoulder and Super Koopa
 - added list file format clarifications
 - update Callisto to v0.4.0
