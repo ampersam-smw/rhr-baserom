@@ -29,8 +29,8 @@
 0293:0025 global/one_way_down.asm
 0294:0025 global/one_way_left.asm
 0295:0025 global/one_way_right.asm
-0296:0130 global/solid_when_off.asm
-0297:0130 global/solid_when_on.asm
+0296:0130 on_off/passthrough_when_off.asm
+0297:0130 on_off/passthrough_when_on.asm
 0298:0130 global/breakable_by_item.asm
 0299:0025 global/sprite_killer.asm
 029A:0130 global/hurt_death.asm
@@ -41,13 +41,13 @@
 029F:0025 global/ledge_vine.asm
 02A0:0025 global/fake_spiny.asm
 02A1:0025 global/fake_swooper.asm
-02A2:0025 global/set_to_on.asm
-02A3:0025 global/set_to_off.asm
+02A2:0025 on_off/set_to_on.asm
+02A3:0025 on_off/set_to_off.asm
 02A4:0025 global/teleport.asm
 02A5:0130 global/single_use_bounce_block.asm
 02A6:0130 global/bumper.asm
-02A7:0025 global/collectable_set_to_on.asm
-02A8:0025 global/collectable_set_to_off.asm
+02A7:0025 on_off/collectable_set_to_on.asm
+02A8:0025 on_off/collectable_set_to_off.asm
 ;02A9 reserved by baserom
 02AA:0025 camera/scroll_left.asm
 02AB:0025 camera/scroll_right.asm

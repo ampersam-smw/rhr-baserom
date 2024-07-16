@@ -4,8 +4,8 @@
 293	0	Solid to anything moving upwards.
 294	0	Solid to anything moving rightwards.
 295	0	Solid to anything moving leftwards.
-296	0	Block that is solid when ON/OFF switch is OFF.
-297	0	Block that is solid when ON/OFF switch is ON.
+296	0	Block that is passthrough when switch state is ON and the Map16 act-as when OFF.
+297	0	Block that is passthrough when switch state is OFF and the Map16 act-as when ON.
 298	0	A block that shatters when a sprite is thrown at it.
 299	0	A block that kills sprites. Does not work for sprites that do not have object interaction.
 29a	0	Block that kills the player (even on yoshi), is solid for sprites and kills on wall running.
@@ -16,13 +16,13 @@
 29f	0	A ledge vine that the player automatically hops above.
 2a0	0	A block that acts like a mid-air suspended Spiny.
 2a1	0	A block that acts like a stationary Swooper.
-2a2	0	Sets the ON/OFF status to ON when anything (incl. dead sprites) passes through it.
-2a3	0	Sets the ON/OFF status to OFF when anything (incl. dead sprites) passes through it.
+2a2	0	Sets the switch state to ON when anything (incl. dead sprites) touches it.
+2a3	0	Sets the switch state to OFF when anything (incl. dead sprites) touches it.
 2a4	0	A block that will teleport Mario to set current screen exit.
 2a5	0	A single-use bounce block. Noteblock bounce height, doesn't negate spin
 2a6	0	A block that bounces throw blocks from the side.
-2a7	0	A coin that changes the ON/OFF state to ON.
-2a8	0	A coin that changes the ON/OFF state to OFF.
+2a7	0	A coin that changes the switch state to ON when collected.
+2a8	0	A coin that changes the switch state to OFF when collected.
 2aa	0	Scroll camera left. (Remove graphics in Map16 when finished.)
 2ab	0	Scroll camera right. (Remove graphics in Map16 when finished.)
 2ac	0	Enable horizontal camera scroll. (Remove graphics in Map16 when finished.)
