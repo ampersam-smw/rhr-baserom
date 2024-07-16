@@ -7,6 +7,7 @@ v5.9
 - reorganize screen scrolling pipe block tiles
 - added gfx tweak for Chuck shoulder and Super Koopa
 - added list file format clarifications
+- added pair of uberasm objects to init on/off state
 - update Callisto to v0.4.0
 
 v5.8
