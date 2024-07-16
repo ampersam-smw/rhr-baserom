@@ -2,6 +2,8 @@ v5.9
 - moved screen scrolling pipe freeram to custom bank
 - swapped out baserom item release patch with betalogic version
 - fixed uberasm objects being run in the wrong time
+- fix a bunch of inconsistent logic in the ON/OFF blocks
+- clean up block descriptions
 - added gfx tweak for Chuck shoulder and Super Koopa
 - added list file format clarifications
 - update Callisto to v0.4.0
