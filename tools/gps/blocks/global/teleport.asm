@@ -22,10 +22,7 @@ MarioSide:
 	RTL
 
 TeleportY:
-	%teleport_direct()
 	PLY
-	RTL
-
 Teleport:
 	%teleport_direct()
 Return:
