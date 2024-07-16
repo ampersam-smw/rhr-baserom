@@ -16,13 +16,11 @@ endmacro
 
 routines:
 .init
-    %ObjectRoutine($98, free_vertical_scroll)
     %ObjectRoutine($99, no_horizontal_scroll)
     %ObjectRoutine($9A, set_state_to_off)
     %ObjectRoutine($9B, toggle_block_duplication)
     %ObjectRoutine($9C, toggle_status_bar)
     %ObjectRoutine($9D, toggle_lr_scroll)
-    %ObjectRoutine($9E, enable_sfx_echo)
     %ObjectRoutine($A2, toggle_vanilla_turnaround)
     %ObjectRoutine($A9, toggle_spinjump_fireballs)
     %ObjectRoutine($AA, toggle_springboard_fixes)
@@ -44,6 +42,8 @@ routines:
 ..end
 
 .main
+    %ObjectRoutine($98, free_vertical_scroll)
+    %ObjectRoutine($9E, enable_sfx_echo)
     %ObjectRoutine($A0, no_powerups)
     %ObjectRoutine($A3, eight_frame_float)
     %ObjectRoutine($A4, zero_float_delay)
