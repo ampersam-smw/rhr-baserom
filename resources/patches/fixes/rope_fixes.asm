@@ -64,13 +64,13 @@ endif
 
 if !is_toggleable                   ; include climb routine if toggleable option is set
 .climb
-    LDA $163E|!addr : BEQ .ret      ; check if Mario is in contact with the rope
-    LDA $77 : AND #$03 : BEQ .ret   ; check if Mario is blocked to the side
+    LDA $18BE|!addr : CMP #$08      ;\ check if Mario is in on a rope
+    BNE .ret                        ;/
     LDA #$01 : STA $18BE|!addr      ; set "on rope" flag to induce climbing
 endif
 
 .ret
-+   PLA                             ; pull accumulator
+    PLA                             ; pull accumulator
     RTL                             ; return
 
 
