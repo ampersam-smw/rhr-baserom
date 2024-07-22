@@ -24,6 +24,7 @@ routines:
     %ObjectRoutine($A2, toggle_vanilla_turnaround)
     %ObjectRoutine($A9, toggle_spinjump_fireballs)
     %ObjectRoutine($AA, toggle_springboard_fixes)
+    %ObjectRoutine($AD, toggle_rope_glitch)
     %ObjectRoutine($B0, retry_instant)
     %ObjectRoutine($B1, retry_prompt)
     %ObjectRoutine($B2, retry_bottom_left)
@@ -262,7 +263,11 @@ disable_screen_shake:
     stz $1887|!addr ; store zero to the layer 1 shake timer
     rts
 
-; Extended Object AD
+; Extended Object AD - Toggle rope glitch
+toggle_rope_glitch:
+    lda #$01 : sta !toggle_rope_glitch_freeram
+    rts
+
 ; Extended Object AE
 ; Extended Object AF
 

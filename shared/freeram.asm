@@ -5,12 +5,12 @@ includeonce
 ; Large blocks of ram
 if read1($00FFD5) == $23
     !objectool_level_flags_bank             = $409400 ; 16 bytes reserved, 13 used
-    !toggles_freeram_bank                   = $409410 ; 16 bytes reserved, 7 used
+    !toggles_freeram_bank                   = $409410 ; 16 bytes reserved, 8 used
     !scroll_pipes_freeram_bank              = $409420 ; 16 bytes reserved, 5 bytes
     !retry_freeram                          = $40A400 ; 230 (+ 4 * # of midways) bytes used
 else
     !objectool_level_flags_bank             = $7FA400 ; 16 bytes reserved, 13 used
-    !toggles_freeram_bank                   = $7FA410 ; 16 bytes reserved, 7 used
+    !toggles_freeram_bank                   = $7FA410 ; 16 bytes reserved, 8 used
     !scroll_pipes_freeram_bank              = $7FA420 ; 16 bytes reserved, 5 bytes
     !retry_freeram                          = $7FB400 ; 230 (+ 4 * # of midways) bytes used
 endif
@@ -39,3 +39,4 @@ endif
 !toggle_capespin_direction_freeram          = !toggles_freeram_bank+4 ; 1 byte
 !toggle_springboard_fixes_freeram           = !toggles_freeram_bank+5 ; 1 byte
 !toggle_retry_indicator_freeram             = !toggles_freeram_bank+6 ; 1 byte
+!toggle_rope_glitch_freeram                 = !toggles_freeram_bank+7 ; 1 byte
