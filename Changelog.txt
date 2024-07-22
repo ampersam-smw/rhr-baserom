@@ -5,9 +5,11 @@ v5.9
 - fix a bunch of inconsistent logic in the ON/OFF blocks
 - clean up and update block descriptions for clarity
 - reorganize screen scrolling pipe block tiles
+- replace rope fix patch with RAM-toggleable one
 - added gfx tweak for Chuck shoulder and Super Koopa
 - added list file format clarifications
 - added pair of uberasm objects to init on/off state
+- added button to the usertoolbar for exit-enabled tiles
 - update Callisto to v0.4.0
 
 v5.8
