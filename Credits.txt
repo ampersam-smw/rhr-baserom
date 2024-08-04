@@ -19,6 +19,7 @@ Player X Speed Fix 3.1 - HammerBrother, tjb0607 - https://smwc.me/s/33679
 -- Enhancement Patches --
 Bullet Bill Sound Effect on Extra Bit - AmperSam - https://smwc.me/s/34948
 Double Bounce Shell Palette - Fernap
+Growing/Shrinking Pipe Exit on Extra Bit - JamesD28 - https://smwc.me/s/24160
 Monty Mole, Hammer Bro and Dry Bone Behavior on Extra Bit - Kevin - https://smwc.me/s/30450
 Pitchin' Chuck Won't Turn On Extra Bit - JamesD28 - https://smwc.me/s/28579
 Placeable (Kicked) Throw Block - Kevin - https://smwc.me/s/22809
