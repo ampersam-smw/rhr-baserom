@@ -10,6 +10,7 @@ init:
     sta !objectool_level_flags_bank,x
     sta !toggles_freeram_bank,x
     sta !scroll_pipes_freeram_bank,x
+    sta !scroll_fix_freeram_bank,x
     dex
     bpl -
     rtl

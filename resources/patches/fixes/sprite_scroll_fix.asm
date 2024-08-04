@@ -1,6 +1,6 @@
 incsrc "../../../shared/freeram.asm"
 
-!Freeram_PrevPos = !sprite_scroll_fix_position_freeram
+!Freeram_PrevPos = !scroll_fix_freeram_bank
 ;^[4 bytes], determines direction from its previous position. The first
 ;two bytes are for X position, and the last two are for the Y. When working
 ;with ASM to control the screen (by changing $7E1462 and $7E1464), DO NOT
@@ -12,7 +12,7 @@ incsrc "../../../shared/freeram.asm"
 ;^Set this  to 1 if you wanted to use a number that is the amount of pixels
 ;the screen has been moved.
 
-!Freeram_ScrnDisplace = !sprite_scroll_fix_displacement_freeram
+!Freeram_ScrnDisplace = !scroll_fix_freeram_bank+4
 ;[4 bytes], this ram is used if !Displacement is set to 1. This ram address
 ;holds the amount of pixels the screen has moved. Format:
 ;-First 2 bytes = moved horizontally

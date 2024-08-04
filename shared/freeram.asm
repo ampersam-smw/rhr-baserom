@@ -6,12 +6,14 @@ includeonce
 if read1($00FFD5) == $23
     !objectool_level_flags_bank             = $409400 ; 16 bytes reserved, 13 used
     !toggles_freeram_bank                   = $409410 ; 16 bytes reserved, 8 used
-    !scroll_pipes_freeram_bank              = $409420 ; 16 bytes reserved, 5 bytes
+    !scroll_pipes_freeram_bank              = $409420 ; 16 bytes reserved, 5 used
+    !scroll_fix_freeram_bank                = $409430 ; 16 bytes reserved, 8 used
     !retry_freeram                          = $40A400 ; 230 (+ 4 * # of midways) bytes used
 else
     !objectool_level_flags_bank             = $7FA400 ; 16 bytes reserved, 13 used
     !toggles_freeram_bank                   = $7FA410 ; 16 bytes reserved, 8 used
-    !scroll_pipes_freeram_bank              = $7FA420 ; 16 bytes reserved, 5 bytes
+    !scroll_pipes_freeram_bank              = $7FA420 ; 16 bytes reserved, 5 used
+    !scroll_fix_freeram_bank                = $7FA430 ; 16 bytes reserved, 8 used
     !retry_freeram                          = $7FB400 ; 230 (+ 4 * # of midways) bytes used
 endif
 
@@ -19,9 +21,7 @@ endif
 ; https://www.smwcentral.net/?p=memorymap&game=smw&region[]=ram&type=Empty
 
 ; Resource FreeRAM (sorted by used address)
-!sprite_scroll_fix_position_freeram         = $0DC3|!addr ; 4 bytes
 !block_duplication_freeram                  = $13E6|!addr ; 1 byte
-!sprite_scroll_fix_displacement_freeram     = $1487|!addr ; 4 bytes
 !triangles_fix_freeram                      = $14BE|!addr ; 1 byte
 !auto_save_tile_check_freeram               = $14C1|!addr ; 1 byte
 !goal_point_reward_fix_freeram              = $15E8|!addr ; 1 byte

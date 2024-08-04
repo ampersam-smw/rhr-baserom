@@ -25,10 +25,8 @@
 <table border="1" class="full">
 <tr><th>Address</th><th>Bytesize</th><th>Resource</th></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E0087">$87</a></td><td>1 byte</td><td>Used by SA-1 (if using)</td></tr>
-<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E0DC3">$0DC3</a></td><td>4 bytes</td><td>Sprite Scroll Fix patch</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E13E6">$13E6</a></td><td>1 bytes</td><td>Block duplication fix patch</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E146C">$146C</a></td><td>1 byte</td><td>Used by Lunar Magic</td></tr>
-<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E1487">$1487</a></td><td>4 bytes</td><td>Sprite Scroll Fix patch</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E14BE">$14BE</a></td><td>1 byte</td><td>Layer 2 and 3 wall triangle Fix patch</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E14C1">$14C1</a></td><td>1 byte</td><td>Used by simple auto save as a check</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E15E8">$15E8</a></td><td>1 byte</td><td>Goal point reward fix patch</td></tr>
@@ -38,18 +36,19 @@
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7E1DFD">$1DFD</a></td><td>1 byte</td><td>ON/OFF double-hit Fix</td></tr>
 </table>
 <h4 id="large-blocks">Large Blocks of FreeRAM</h4>
-<p>These are resources that use more than a few bytes of FreeRAM to function, and are using "long" addresses in the <code>$7F****</code> block of memory.</p>
+<p>These are resources that use more than a few bytes of FreeRAM to function, and are using "long" addresses in the <code>$7F****</code> block of memory. These addresses will be different on SA-1.</p>
 <table border="1" class="full">
-<tr><th>Addresses*</th><th>Bytesize</th><th>Resource</th></tr>
-<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA400">$7FA400</a></td><td>16 bytes (reserved length)</td><td>Baserom Feature Toggles</td></tr>
-<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA410">$7FA410</a></td><td>16 bytes (reserved length)</td><td>UberASM Object System</td></tr>
-<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA420">$7FA420</a></td><td>16 bytes (reserved length)</td><td>Screen Scrolling Pipes</td></tr>
+<tr><th>Addresses</th><th>Bytesize</th><th>Resource</th></tr>
+<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA400">$7FA400</a></td><td>16 bytes reserved*, 13 used</td><td>Baserom Feature Toggles</td></tr>
+<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA410">$7FA410</a></td><td>16 bytes reserved*, 8 used</td><td>UberASM Object System</td></tr>
+<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA420">$7FA420</a></td><td>16 bytes reserved*, 5 used</td><td>Screen Scrolling Pipes</td></tr>
+<tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA430">$7FA430</a></td><td>16 bytes reserved*, 8 used</td><td>Sprite Scroll Fix Patch</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA660">$7FA660</a></td><td>300 bytes</td><td>Dragon Coin Save, coins themselves</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FA960">$7FA960</a></td><td>8 bytes</td><td>Dragon Coin Save, buffer</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FB000">$7FB000</a></td><td>2 to 1032 bytes</td><td>AddMusicK</td></tr>
 <tr><td><a target="_blank" href="https://smwc.me/m/smw/ram/7FB400">$7FB400</a></td><td>230 bytes (+1 for every midway)</td><td>Retry System</td></tr>
 </table>
-<small>*These addresses may be different on SA-1.</small>
+<small>*The baserom clears a range of 16 bytes to reserve regardless, for simplicity.</small>
 <hr>
 <h3 id="changing-freeram">Changing FreeRAM</h3>
 <p>For easy configuration, the baserom uses a shared config file in <span class="dir">shared/freeram.asm</span> to define FreeRAM values with, so they can be called independently of resources that use them and easily be referenced.</p>
