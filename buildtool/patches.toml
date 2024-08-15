@@ -1,25 +1,12 @@
+# This config file contains the list of patches
+# to be applied by callisto during the build
+
+# You can remove or comment out (append a # to the line)
+# from this file to "remove" a patch since it will be
+# omitted during next build
+
 [resources]
 
-# Fastrom initial patch
-initial_patch = "resources/initial_patches/fastrom.bps"
-
-# Uncomment the line below if you would like to use SA-1.
-# and comment out the one above
-#initial_patch = "resources/initial_patches/sa1.bps"
-
-# Exported resources
-levels = "resources/levels"
-shared_palettes = "resources/palettes/Shared.pal"
-map16 = "resources/map16/All.map16"
-
-# Global resources
-credits = "resources/global/credits.bps"
-overworld = "resources/global/overworld.bps"
-titlescreen = "resources/global/titlescreen.bps"
-global_exanimation = "resources/global/exanimation.bps"
-
-# These are the Asar patches Callisto applies at build time.
-# You can remove or comment out (append a # to the line) from this file to "un-apply" a patch.
 patches = [
 	"resources/patches/consistency/capespin_direction.asm",
 	"resources/patches/consistency/capespin_net_hitbox.asm",

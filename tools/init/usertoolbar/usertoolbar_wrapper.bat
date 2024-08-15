@@ -31,7 +31,7 @@ set "uber_path=!tools_dir!uberasmtool"
 set "uber_list=!uber_path!\list.txt"
 :: asar patches
 set "patches_path=!ROOT_DIR!resources\patches"
-set "patches_list=!ROOT_DIR!buildtool\resources.toml"
+set "patches_list=!ROOT_DIR!buildtool\patches.toml"
 
 
 :ParseArgs

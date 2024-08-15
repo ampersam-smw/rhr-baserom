@@ -1,70 +1,36 @@
 # This config file contains settings for the whole project
-
-# Common configurations
 [settings]
-project_root = "../"
-check_conflicts = "hijacks"
-conflict_log_file = "buildtool/conflicts.txt"
 
-# path to the clean SMW rom file
-clean_rom = "resources/clean.smc"
+    # the root of your project (don't change)
+    # configured to be relative to the Callisto .exe
+    project_root = "../"
 
-ignored_conflict_symbols = [
-	"InitialPatch",
+    # Conflict reporting
+    check_conflicts = "hijacks"
+    conflict_log_file = "buildtool/conflicts.txt"
 
-    "Overworld",
-    "TitleScreen",
-    "Credits",
-    "GlobalExAnimation",
-
-    "SharedPalettes",
-
-    "ExGraphics",
-    "Graphics",
-
-    "Levels",
-
-    "Map16"
-]
-
-use_text_map16_format = false
-enable_automatic_exports = true
-enable_automatic_reloads = true
-
-# Project output configuration
-[output]
-output_rom = "workspace/RHRv5.smc"
-temporary_folder = "workspace/temp"
-bps_package = "workspace/RHRv5.bps"
+    # path to the clean SMW rom file
+    clean_rom = "resources/clean.smc"
 
 
-# Build order configuration
-[orders]
-build_order = [
-    "InitialPatch",             # Apply initial patch
+    # Any symbols from the build order (see build.toml)
+    # listed here will not be considered when
+    # reporting conflicts, this lets you configure the verbosity
+    # of callisto's conflict reporting to your liking
+    ignored_conflict_symbols = [
+        "InitialPatch",
 
-    # "Modules",                  # Insert modules
+        "Overworld",
+        "TitleScreen",
+        "Credits",
+        "GlobalExAnimation",
 
-    "Graphics",                 # Insert GFX
-    "ExGraphics",               # Insert ExGFX
-    "Map16",                    # Insert Map16
+        "SharedPalettes",
 
-	# "TitleScreenMovement",      # Uncomment this if you're inserting title moves
+        "ExGraphics",
+        "Graphics",
 
-    "SharedPalettes",           # Insert Shared Palettes
-    "Overworld",                # Insert Overworld
-    "TitleScreen",              # Insert Titlescren
-    "Credits",                  # Insert Credits
-    "GlobalExAnimation",        # Insert Global ExAnimation
+        "Levels",
 
-    "Patches",                  # Insert all remaining patches from the patches list that
-                                # are not explicitly mentioned in this build order
-
-
-    "PIXI",                     # Insert custom sprites
-    "Levels",                   # Insert all levels
-
-    "GPS",                      # Insert custom blocks
-    "AddMusicK",                # Insert custom music
-    "UberASM",                  # Insert UberASM code
-]
+        "Map16"
+    ]
