@@ -1,4 +1,5 @@
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 !Freeram_PrevPos = !scroll_fix_freeram_bank
 ;^[4 bytes], determines direction from its previous position. The first

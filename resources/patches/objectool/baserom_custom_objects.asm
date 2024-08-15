@@ -1,5 +1,6 @@
 
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ; code for extended objects 98-CF

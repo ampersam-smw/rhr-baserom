@@ -1,4 +1,5 @@
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 ;===================================================================================================================================
 ; Extended No Sprite Tile Limits v4.0

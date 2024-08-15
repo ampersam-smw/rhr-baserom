@@ -1,4 +1,5 @@
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 ;
 ; Line-guided Rope Fixes by AmperSam (rework of Rope Fix patch by Alcaro)

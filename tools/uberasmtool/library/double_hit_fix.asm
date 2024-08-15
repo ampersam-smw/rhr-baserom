@@ -1,4 +1,5 @@
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 ; How many frames of cooldown to have ($00-$7F)
 !cooldown = $08

@@ -1,5 +1,6 @@
 ; include common freeram
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 ; include retry definitions
 incsrc "../retry_config/ram.asm"
 

@@ -1,4 +1,5 @@
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 ; Bytes to clear in each bank
 !Bytes = 16

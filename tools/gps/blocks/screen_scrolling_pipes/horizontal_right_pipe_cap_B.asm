@@ -2,7 +2,8 @@
 ;this is the right bottom-half cap of a horizontal 2-way pipe.
 ;behaves $130
 
-incsrc "../../../../shared/defines/ScreenScrollingPipes.asm"
+incsrc "callisto.asm"
+%import_library("defines/ScreenScrollingPipes.asm")
 
 db $42
 JMP MarioBelow : JMP MarioAbove : JMP MarioSide : JMP return : JMP return : JMP return

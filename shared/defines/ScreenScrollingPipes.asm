@@ -1,4 +1,5 @@
-incsrc "../freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Simplified defines for GHB's screen scrolling pipes.

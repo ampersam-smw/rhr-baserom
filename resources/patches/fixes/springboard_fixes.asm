@@ -1,4 +1,5 @@
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 ; Springboard Fixes by MiracleWater made RAM-toggleable by AmperSam
 

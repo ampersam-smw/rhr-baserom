@@ -1,5 +1,6 @@
 incsrc "../retry_config/ram.asm"
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 main:
 ; run during end (UberASMTool 2.0 only)

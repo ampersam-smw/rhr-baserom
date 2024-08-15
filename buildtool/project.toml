@@ -12,7 +12,6 @@
     # path to the clean SMW rom file
     clean_rom = "resources/clean.smc"
 
-
     # Any symbols from the build order (see build.toml)
     # listed here will not be considered when
     # reporting conflicts, this lets you configure the verbosity
@@ -34,3 +33,9 @@
 
         "Map16"
     ]
+
+[resources]
+
+    # The file to be automatically included whenever
+    # you use 'incsrc "callisto.asm"' in any resource
+    callisto_header = "shared/callisto/header.asm"

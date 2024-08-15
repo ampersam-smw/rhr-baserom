@@ -1,0 +1,19 @@
+# This config file contains the header file for and list of
+# modules to be inserted by Callisto during the build process
+
+# Modules are extremely general constructs that can be used to
+# add new functionality to a ROM that can be accessed by *any*
+# tool, sprite, block, etc. without any code duplication or
+# file duplication. They can contain data or code, anything
+# you want really. Think of them like UberASM library files or
+# GPS/PIXI routines, but usable *anywhere*!
+
+# For more details, check the documentation!
+
+[resources]
+
+module_header = "shared/defines/sa1def.asm"
+
+modules = [
+
+]

@@ -1,4 +1,5 @@
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 ; Capespin Direction Consistency (a.k.a. Turnaround) by Katun24, converted to SA-1 by AmperSam, made freeram toggleable by binavik
 ; This patch makes it so a capespin always results in Mario turning around, and makes the face direction consistent during the capespin animation.

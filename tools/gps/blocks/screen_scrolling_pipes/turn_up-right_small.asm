@@ -3,7 +3,8 @@
 ;from up to right or left to down, for small pipes.
 ;Behaves $25 or $130
 
-incsrc "../../../../shared/defines/ScreenScrollingPipes.asm"
+incsrc "callisto.asm"
+%import_library("defines/ScreenScrollingPipes.asm")
 
 db $42
 JMP MarioBelow : JMP MarioAbove : JMP MarioSide : JMP Return : JMP Return : JMP Return

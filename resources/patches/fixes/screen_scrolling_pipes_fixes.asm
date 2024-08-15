@@ -76,7 +76,8 @@ if read1($00EA16) != $C2		;>Originally [REP #$20] [C2 20]
 	!WalljumpNoteBlockFixPatch = 1
 endif
 
-incsrc "../../../shared/defines/ScreenScrollingPipes.asm"
+incsrc "callisto.asm"
+%import_library("defines/ScreenScrollingPipes.asm")
 
 	macro define_sprite_table(name, addr, addr_sa1)
 		if !sa1 == 0

@@ -1,4 +1,6 @@
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
+
 ;Layer 2+3 Triangles
 ;Fixes wall run triangles so they work with layer 2/3 interaction enabled
 ;And also work when placed on Layer 2

@@ -1,4 +1,5 @@
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 ; Block Duplication Fix v1.5 by lolcats439 (Asar conversion and SA-1/SuperFX hybrid by LDA)
 ; Fixes the block duplication glitch

@@ -1,4 +1,5 @@
-incsrc "../../../shared/freeram.asm"
+incsrc "callisto.asm"
+%import_library("freeram.asm")
 
 ;RAM specific LR scroll disable
 ;Highly based off of Smallhacker's L/R Hook patch, not compatible with it though
