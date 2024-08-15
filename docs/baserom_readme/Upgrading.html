@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upgrading - Romhack Races Baserom</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="./img/flop.gif" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+<header><div class="home"><a href="./index.html">🏠</a></div><span>Upgrading</span></header>
+<section>
+<p>If you have started a project on an older version of the baserom and are looking to upgrade to the latest release to get some new features or fixes that came out, there are a couple ways to go about this.</p>
+<p>The first is to port your existing project from an older version to a newer version of the baserom, or: grab the changes you want from a newer version and add them to your current project.</p>
+<p>If you already have a project started we strongly recommend just sticking with the version you have already. Rarely are there critical updates in successive versions that would require upgrading or starting your project over on a new version, but if there's something you really want your best course of action is to cherry-pick the new things and backport them.</p>
+<h3 id="#">Contents</h3>
+<ul>
+<li><a href="#upgrading-version-5">Upgrading on Version 5.x</a>
+    <ul>
+        <li><a href="#transfer-global-resources">Transfer Global Resources</a></li>
+        <li><a href="#transfer-graphics">Transfer Graphics and ExGraphics</a></li>
+        <li><a href="#transfer-assets">Transfer Custom Assets</a></li>
+        <li><a href="#update-config">Update Configuration Files</a></li>
+        <li><a href="#rebuild">Rebuild in Callisto</a></li>
+    </ul>
+</li>
+<li><a href="#version-4">Upgrading from Legacy Versions</a></li>
+    <ul>
+        <li><a href="#version-4">Version 4.x</a></li>
+        <li><a href="#version-3">Version 3</a></li>
+    </ul>
+<li><a href="#backporting">Backporting Changes</a></li>
+</ul>
+<h3 id="upgrading-version-5">Upgrading on Version 5.x</h3>
+<p>If you do want to restart a project on a newer version of the 5.x baserom the simplest approach to upgrading is to migrate your resources from an older version to a newer and rebuild.</p>
+
+<h4 id="transfer-global-resources">Transfer Global Resources</h4>
+<p>Callisto will (if you have been using it) export things from your project as you work on it to make it easier to move them or track changes if you are using version control.</p>
+<p>As of version 5.10, all exported files will be found in the <span class="dir">export</span> directory. To upgrade, you can copy or move these files into a new project, replacing as needed.</p>
+<table border="1" class="full">
+<tr><th>Item</th><th>Description</th></tr>
+<tr><td>global</td><td>All global resources in a rom: the titlescreen, overworld, credits and global ExAnimation settings (as .bps files).</td></tr>
+<tr><td>levels</td><td>All your exported levels (as .mwl files), including any levels that had a minor edit.</td></tr>
+<tr><td>all_map16.map16</td><td>A full export of your project's entire Map16, which includes all pages.</td></tr>
+<tr><td>shared_palettes.pal</td><td>A full export of your project's shared palette. (Level palettes are saved with levels.)</td></tr>
+</table>
+<small>In versions 5.9 and earlier these files were in the "resources" folder, and with different filenames.</small>
+
+<p>Since the global resources are not very portable&mdash;using a BPS patch is very heavy-handed&mdash;you may have to manually fix some things, like global ExAnimation, if the baserom made changes between updates.</p>
+
+<h4 id="transfer-graphics">Transfer Graphics and ExGraphics</h4>
+<p>The graphics files for your project are still local to the ROM and will be in the <span class="dir">workspace</span> folder, so be sure to copy the "Graphics" and "ExGraphics" directories of your existing project to the new one.</p>
+
+<h4 id="transfer-assets">Transfer Custom Assets</h4>
+<p>If you have added new assets to a project, such as custom sprites, blocks, UberASM, patches, music, etc., you will have to port those over to the new version of your project. When doing so take care to also update the relevant list files for the tools, and also check to see if you are overwriting any changes made by the baserom instead of just copy and replacing.</p>
+
+<h4 id="update-config">Update Configuration Files</h4>
+<p>If you have changed the configuration for any of the tools or resources that come with the baserom, such as the Callisto settings, the shared FreeRAM definitions, or the Retry System config, be sure to make those changes as well.</p>
+
+<h4 id="rebuild">Rebuild in Callisto</h4>
+<p>Once everything has be transferred you can simply Rebuild the project using Callisto. If there's something you missed, simply transfer that over and Rebuild again.</p>
+
+<hr>
+<h3 id="legacy-upgrades">Upgrading from Legacy Versions</h3>
+<p>Older versions of the baserom are no longer receiving updates and upgrading a project based on those versions to version 5 will not be very straightforward.</p>
+
+<h4 id="version-4">Version 4.x</h4>
+<p>The Lunar Helper based version of the baserom ended at 4.17 and isn't receiving any more updates. The upgrade process will be somewhat similar to the above for Callisto, since Lunar Helper functioned similarly, but things are organized quite differently.</p>
+
+<h4 id="version-3">Version 3</h4>
+<p>If for some reason you are using the incredibly old <a href="https://github.com/romhackraces/baserom/tree/RHR_BaseromV3">Version 3</a> baserom, your upgrade path is simply to start a new project entirely on the latest version. Lunar Magic has some functionality to manually export things, like levels, and it's recommended to consult the Help document for instructions on using that.</p>
+
+<hr>
+<h3 id="backporting">Backporting Changes</h3>
+<p>This is a more advanced process (which is easier if you are already familiar with the baserom) where you can pull in only specific changes by reviewing the changes that happened between versions and picking out only what you want.</p>
+<p>The best way to go about this is to review the <a href="https://github.com/romhackraces/baserom/commits/RHRv5/" target="_blank">commit history</a> of the baserom's GitHub repository to see what got committed during development, finding those commits that are relevant or of interest, and apply the changes in those to your own project.</p>
+</section>
+<a href="#" class="go-to-top"></a>
+</body>
+</html>
