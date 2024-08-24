@@ -18,6 +18,7 @@ Player X Speed Fix 3.1 - HammerBrother, tjb0607 - https://smwc.me/s/33679
 
 -- Enhancement Patches --
 Bullet Bill Sound Effect on Extra Bit - AmperSam - https://smwc.me/s/34948
+Chucks With Extra Bit Retain Type When Hurt - JamesD28 - https://smwc.me/s/28594
 Double Bounce Shell Palette - Fernap
 Growing/Shrinking Pipe Exit on Extra Bit - JamesD28 - https://smwc.me/s/24160
 Monty Mole, Hammer Bro and Dry Bone Behavior on Extra Bit - Kevin - https://smwc.me/s/30450
@@ -39,6 +40,7 @@ RAM-Toggled Spin Jump Fireballs - AmperSam - https://smwc.me/s/35220
 
 -- Bug Fix Patches --
 $13FB Game Crash Fix (Fireberry) - p4plus2 - https://smwc.me/s/18319
+Autoscroll ($1411) + L/R Softlock Fix - Telinc1 - https://smwc.me/s/15711
 Ball n' Chain and Yoshi Interaction Fix - Kevin - https://smwc.me/s/22761
 BG Candle Flames Priority Fix (for SA-1 MaxTile) - Kevin - https://smwc.me/s/32380
 Block Duplication Fix v1.6* - Tattletale, lolcats439, spooonsss - https://smwc.me/s/37662
