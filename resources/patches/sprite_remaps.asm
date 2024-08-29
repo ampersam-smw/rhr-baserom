@@ -61,4 +61,3 @@ org $029ED5 : db $04
 ; Podoboo lava trail
 org $028F2B : db $5F,$4F,$5E,$4E
 org $028F76 : db $04
-org $028F82 : db $00
