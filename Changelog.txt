@@ -2,6 +2,7 @@ v5.10
 - change Sprite Scroll fix patch to use a large a freeram bank
 - rework the build system setup to better accommodate exporting and migration between updates
 - make use of Callisto header functionality to do away with relative links in resources
+- general improvements to basic documentation in the Readme
 - add documentation covering upgrading the baserom
 
 v5.9
