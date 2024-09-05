@@ -27,18 +27,19 @@
 </ol>
 <hr>
 <h3 id="callisto">What is Callisto?</h3>
-<p>It's a build tool that manages your project and does all the usual romhacking things through a simple user interface with a few actions. Callisto designed to run tools only when needed and avoid potential conflicts between resources, this way it insures your hack is cleanly constructed whenever you make changes. The big upside of using this is if something goes wrong then you can easily pinpoint what that was and remove or fix it so the next time you build it is not included in your project.</p>
-<p>Read the Callisto documentation in the <span class="dir">docs/tools/Callisto</span> folder for more details information about how to use this tool.</p>
+<p>It's a build tool that manages your project and does all the usual romhacking things through a simple user interface with a few actions.</p>
+<p>Callisto designed to run tools only when needed and avoid potential conflicts between resources, this way it insures your hack is cleanly constructed whenever you make changes. The big upside of using this is if something goes wrong then you can easily pinpoint what that was and remove or fix it so the next time you build it is not included in your project.</p>
+<p>Read the Callisto documentation in the <span class="dir">docs/tools/Callisto</span> folder for more detailed information about how to use this tool.</p>
 <hr>
 <h3 id="lunar-helper">What happened to Lunar Helper?</h3>
-<p>Lunar Helper has been succeeded by Callisto, which is detailed above. Callisto functions in much the same way as Lunar Helper&ndash;as a tool that handles all other tools, and builds and updates your project with simple commands&ndash;but it was rebuilt to have better cross-platform support and improved performance.</p>
+<p>Lunar Helper from the 4.x version of the baserom has been succeeded by Callisto, which is detailed above. Callisto functions in much the same way as Lunar Helper&ndash;as a tool that handles all other tools, and builds and updates your project with simple commands&ndash;but it was rebuilt to have better cross-platform support and improved performance.</p>
 <hr>
 <h3 id="build-scripts">What happened to the build scripts?</h3>
 <p>In an effort to keep the baserom lean, we're going all-in on the Callisto build tool. The build batch files, while useful, were also a bit of maintainance burden and didn't work for some people.</p>
 <hr>
 <h3 id="no-bps">Where is the BPS patch to use the baserom?</h3>
 <p>To get people familiar with the build process of the baserom we've opted to not include the BPS patch to create a ready-to-use baserom. The very simple initialization steps will create a clean slate to get started on a project.</p>
-<p> If you are in need of a BPS file, Callisto can create one with the "Package" action, or from the <span class="usertoolbar-button" style="background-position:calc(-16px * 10);"></span> button on the included <a href="./User Toolbar.html">User Toolbar</a>.</p>
+<p> If you are in need of a BPS file, Callisto can create one with the "Package" action, or from the <span class="usertoolbar-button" style="background-position:calc(-16px * 10);" data-tooltip="Make a BPS patch with Callisto"></span> button on the included <a href="./User Toolbar.html">User Toolbar</a>.</p>
 <hr>
 <h3 id="removing-things">How do I remove things from the baserom?</h3>
 <p>Callisto makes it easy to remove items from the baserom without a problem as it re-builds your ROM from scratch avoiding resource conflicts. See the <a href="./Basics.html">Baserom Basics page</a> for more details on that.</p>
@@ -54,7 +55,7 @@ init:
     jsl uberasm_objects_init
     ;jsl toggle_statusbar_init
     rtl
-</pre>.</li>
+</pre></li>
     <li>Remove the semi-colon in front of <code>jsl toggle_statusbar_init</code> and save the file.</li>
     <li>Run "Update" in Callisto to insert the UberASM changes in your project.</li>
 </ul>
@@ -73,7 +74,7 @@ init:
 <center><img src="img/garbled_map16.png" title="Custom block tiles missing ExGraphics"></center>
 <p>Many of the custom global block in the baserom use ExGraphics, loading <code>E17</code> into the <b>FG2</b> slot in the Super GFX Bypass dialog will make the blocks appear as they are intended to.</p>
 <hr>
-<h3 id="turn-off-animation">Why are there garbage tiles in the background?</h3>
+<h3 id="turn-off-animation">Why are there weird tiles in the background?</h3>
 <p>If you're using a background resource that uses slot <code>BG3</code> you may notice some of the tiles from the <a href="./ExAnimation.html">baserom's ExAnimations</a> in its tilemap, this is because the addresses at the end of that slot are being used as the destinations for those animations. To stop this from happening you can disable global animations in that level from the menu: "Level &rarr; Edit Animation Settings" and uncheck "Enable Lunar Magic's global animations".</p>
 <hr>
 <h3 id="sa1">Is the baserom SA-1 compatible?</h3>

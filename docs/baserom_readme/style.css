@@ -109,7 +109,7 @@ li {
 }
 li::marker {
 }
-ul.resources {
+ul.buttons {
   margin: 0;
   margin-bottom: 2em;
   padding: 0;
@@ -118,7 +118,7 @@ ul.resources {
   width: 100%;
   float: left;
 }
-ul.resources li a {
+ul.buttons li a {
   width: calc(50% - 32px);
   display: inline-block;
   float: left;
@@ -129,7 +129,7 @@ ul.resources li a {
   color: var(--link_color);
   background-color: var(--link_color_a10);
 }
-ul.resources li a:hover {
+ul.buttons li a:hover {
   background-color: var(--link_color_a20);
 }
 img {
@@ -255,6 +255,37 @@ span.usertoolbar-button {
   background: url('img/usertoolbar_buttons.png') no-repeat;
 }
 
+[data-tooltip] {
+  display: inline-block;
+  position: relative;
+  cursor: help;
+}
+[data-tooltip]:before {
+  content: attr(data-tooltip);
+
+  background: rgba(0,0,0,0.5);
+  border-radius: 6px;
+  color: white;
+  padding: 4px 8px;
+  font-size: smaller;
+  text-align: center;
+  line-height: 1.6;
+
+  display: none;
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(10px);
+}
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  display: block;
+  min-width: 6em;
+  max-width: 20em;
+  z-index: 50;
+}
+
 @media (max-width:968px) {
   header {
     line-height: 3em;
@@ -280,7 +311,7 @@ span.usertoolbar-button {
   table {
     font-size: smaller;
   }
-  ul.resources li a {
+  ul.buttons li a {
     width: calc(100% - 32px);
   }
 }
