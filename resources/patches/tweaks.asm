@@ -42,9 +42,8 @@ org $01A7EF : db $00 ; mario-sprite
 org $0280A8 : bra $05
 org $0280B2 : bra $08
 
-; make doors more easy to enter adjust door proximity check
-org $00F44B : db $0A ; width of the enterable region of the door (up to $10, default: $08)
-org $00F447 : db $05 ; offset the enterable region, which is half of above (default: $04)
+; skip the door proximity check (makes neighboring doors easier to enter)
+org $00EC01 : NOP #5
 
 ; play SFX when exiting horizontal pipes
 org $00D24E : LDA $7D : NOP : NOP
