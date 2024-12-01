@@ -4,13 +4,13 @@
 
 # AddmusicK
 $AddMusicK_Dir = "$ToolsDir\addmusick\"
-$AddMusicK_Download = "https://dl.smwcentral.net/35333/"
+$AddMusicK_Download = "https://dl.smwcentral.net/37906/"
 $AddMusicK_Junk = @("src.zip", "addmusicMRemover.pl", "Makefile", "asar.exe")
 $AddMusicK_Docs = @("readme_files", "readme.html")
 
 # Callisto
 $Callisto_Dir = "$WorkingDir\buildtool\"
-$Callisto_Download = "https://github.com/Underrout/callisto/releases/download/v0.4.0/callisto-v0.4.0.zip"
+$Callisto_Download = "https://github.com/Underrout/callisto/releases/download/v0.4.1/callisto-v0.4.1.zip"
 $Callisto_Junk = @("ASAR_LICENSE", "LICENSE", "config", "asar", "initial_patches")
 $Callisto_Docs = @("documentation")
 
@@ -34,12 +34,12 @@ $LunarMagic_Docs = @("")
 
 # PIXI
 $PIXI_Dir = "$ToolsDir\pixi\"
-$PIXI_Download = "https://github.com/JackTheSpades/SpriteToolSuperDelux/releases/download/1.40/pixi_v1.40.zip"
-$PIXI_Junk = @("removedResources.txt", "changelog.txt", "README.html", "CONTRIBUTING.html", "CHANGELOG.html")
+$PIXI_Download = "https://dl.smwcentral.net/37432/"
+$PIXI_Junk = @("removedResources.txt", "changelog.txt", "README.html", "CONTRIBUTING.html", "CHANGELOG.html", "LICENSE")
 $PIXI_Docs = @("README.html")
 
 # UberASM Tool
 $UberASMTool_Dir = "$ToolsDir\uberasmtool\"
-$UberASMTool_Download = "https://github.com/Fernap/UberASMTool/releases/download/2.0/UberASMTool20.zip"
+$UberASMTool_Download = "https://dl.smwcentral.net/36986/"
 $UberASMTool_Junk = @("readme.txt", "changelog.txt", "incompatibilities.txt", "UberASMTool.dll.config")
 $UberASMTool_Docs = @("readme.html")

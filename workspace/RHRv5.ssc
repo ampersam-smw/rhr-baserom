@@ -96,3 +96,7 @@ E0 0112 1,16,1D6 3,32,1D6 0,48,1C4 16,48,1C5 0,64,1D4 16,64,1D5 12,-10,1D6 24,-2
 85 0012 0,0,225 0,-8,10A
 85 0000 A poison mushroom. Hurts or kills depending on extra bit settings. Currently set to Hurt.
 85 0010 A poison mushroom. Hurts or kills depending on extra bit settings. Currently set to Kill.
+A0 0020 donut_sprite (extra bit clear)
+A0 0022 0,0,0
+A0 0030 donut_sprite (extra bit set)
+A0 0032 0,0,0
