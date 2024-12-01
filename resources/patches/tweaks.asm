@@ -73,6 +73,9 @@ org $00A09C : db $04
 ; disable L/R Scrolling -- not needed with toggleable scrolling patch
 ;org $00CDFC : db $80
 
+; load sprites from level data every frame
+org $02A7FF : db $00
+
 ;;;;;;;;;;;;;;;;;
 ;; Minor Fixes ;;
 ;;;;;;;;;;;;;;;;;
