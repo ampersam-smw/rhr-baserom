@@ -21,118 +21,118 @@
 ; the second for the Yoshi Coins display).
 
 ; default settings for the baserom
-!itemb_tile = $3080 ; with item_box table
-!timer_tile = $0020 ; use with timer table
-!coins_tile = $0022 ; use with coins table
+!ITEMB = $3080 ; with item_box table
+!TIMER = $0020 ; use with timer table
+!COINS = $0022 ; use with coins table
 
 ; if you would like to change an individual level's setting to be different from these pre-set values,
 ; you can do so in the table below following the instructions above
 
 ; don't change
-!no_display = $0000 ; flag to not display any status bar items
-!always_off = $0000 ; a flag to ensure it's always disabled on title level, don't remove it from the tables below
+!__off = $0000 ; flag to not display any status bar items
+!NEVER = $0000 ; a flag to ensure it's always disabled on title level, don't remove it from the tables below
 
 item_box:
-    ;       0           1           2           3           4           5           6           7           8           9           A           B           C            D          E           F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 000-00F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 010-01F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 020-02F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 030-03F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 040-04F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 050-05F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 060-06F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 070-07F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 080-08F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 090-09F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0A0-0AF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0B0-0BF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!always_off,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0C0-0CF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0D0-0DF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0E0-0EF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0F0-0FF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 100-10F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 110-11F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 120-12F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!itemb_tile,!no_display,!no_display,!no_display,!no_display ; 130-13F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 140-14F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 150-15F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 160-16F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 170-17F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 180-18F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 190-19F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1A0-1AF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1B0-1BF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1C0-1CF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1D0-1DF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1E0-1EF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1F0-1FF
+   ;      0      1      2      3      4      5      6      7      8      9      A      B      C      D      E      F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 000-00F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 010-01F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 020-02F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 030-03F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 040-04F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 050-05F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 060-06F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 070-07F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 080-08F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 090-09F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0A0-0AF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0B0-0BF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!NEVER,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0C0-0CF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0D0-0DF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0E0-0EF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0F0-0FF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 100-10F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 110-11F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 120-12F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!ITEMB,!__off,!__off,!__off,!__off ; 130-13F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 140-14F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 150-15F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 160-16F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 170-17F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 180-18F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 190-19F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1A0-1AF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1B0-1BF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1C0-1CF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1D0-1DF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1E0-1EF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1F0-1FF
 
 timer:
-    ;       0           1           2           3           4           5           6           7           8           9           A           B           C            D          E           F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 000-00F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 010-01F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 020-02F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 030-03F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 040-04F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 050-05F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 060-06F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 070-07F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 080-08F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 090-09F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0A0-0AF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0B0-0BF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!always_off,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0C0-0CF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0D0-0DF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0E0-0EF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0F0-0FF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 100-10F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 110-11F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 120-12F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!timer_tile,!no_display,!no_display,!no_display,!no_display ; 130-13F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 140-14F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 150-15F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 160-16F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 170-17F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 180-18F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 190-19F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1A0-1AF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1B0-1BF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1C0-1CF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1D0-1DF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1E0-1EF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1F0-1FF
+   ;      0      1      2      3      4      5      6      7      8      9      A      B      C      D      E      F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 000-00F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 010-01F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 020-02F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 030-03F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 040-04F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 050-05F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 060-06F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 070-07F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 080-08F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 090-09F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0A0-0AF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0B0-0BF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!NEVER,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0C0-0CF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0D0-0DF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0E0-0EF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0F0-0FF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 100-10F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 110-11F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 120-12F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!TIMER,!__off,!__off,!__off,!__off ; 130-13F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 140-14F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 150-15F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 160-16F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 170-17F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 180-18F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 190-19F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1A0-1AF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1B0-1BF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1C0-1CF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1D0-1DF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1E0-1EF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1F0-1FF
 
 coins:
-    ;       0           1           2           3           4           5           6           7           8           9           A           B           C            D          E           F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 000-00F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 010-01F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 020-02F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 030-03F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 040-04F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 050-05F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 060-06F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 070-07F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 080-08F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 090-09F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0A0-0AF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0B0-0BF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!always_off,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0C0-0CF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0D0-0DF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0E0-0EF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 0F0-0FF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 100-10F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 110-11F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 120-12F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!coins_tile,!no_display,!no_display,!no_display,!no_display ; 130-13F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 140-14F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 150-15F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 160-16F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 170-17F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 180-18F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 190-19F
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1A0-1AF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1B0-1BF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1C0-1CF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1D0-1DF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1E0-1EF
-    dw !no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display,!no_display ; 1F0-1FF
+   ;      0      1      2      3      4      5      6      7      8      9      A      B      C      D      E      F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 000-00F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 010-01F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 020-02F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 030-03F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 040-04F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 050-05F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 060-06F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 070-07F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 080-08F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 090-09F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0A0-0AF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0B0-0BF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!NEVER,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0C0-0CF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0D0-0DF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0E0-0EF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 0F0-0FF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 100-10F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 110-11F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 120-12F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!COINS,!__off,!__off,!__off,!__off ; 130-13F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 140-14F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 150-15F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 160-16F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 170-17F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 180-18F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 190-19F
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1A0-1AF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1B0-1BF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1C0-1CF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1D0-1DF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1E0-1EF
+    dw !__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off,!__off ; 1F0-1FF
