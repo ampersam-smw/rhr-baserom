@@ -29,18 +29,10 @@ if (((read1($0FF0B4)-'0')*100)+((read1($0FF0B4+2)-'0')*10)+(read1($0FF0B4+3)-'0'
     !EXLEVEL = 1
 endif
 
+
 ;;;;;;;;;;;;;;;;;;
 ;; Minor Tweaks ;;
 ;;;;;;;;;;;;;;;;;;
-
-; check for interaction every single frame (as opposed to every other frame)
-org $02A0B2 : db $00 ; fireball-sprite
-org $01A7EF : db $00 ; mario-sprite
-;org $029500 : db $00 ; capespin-sprite -- made redundant by capespin consistency patch
-
-; make Bob-Omb explosions interact with Mario and other sprites every frame
-org $0280A8 : bra $05
-org $0280B2 : bra $08
 
 ; skip the door proximity check (makes neighboring doors easier to enter)
 org $00EC01 : NOP #5
@@ -63,14 +55,27 @@ org $03989F : db $EA,$EA,$EA,$EA
 ; remove RNG from Podobos/Jumping Fireballs
 org $01E0D7 : LDA #$7F : NOP #6
 
-; adjust Yellow Koopa jump framerule
-org $018898 : BRA $05
-
 ; shorten intro message skip timer
 org $00A09C : db $04
 
 ; disable L/R Scrolling -- not needed with toggleable scrolling patch
 ;org $00CDFC : db $80
+
+;;;;;;;;;;;;;;;;;
+;; Frame Rules ;;
+;;;;;;;;;;;;;;;;;
+
+; check for interaction every single frame (as opposed to every other frame)
+org $02A0B2 : db $00 ; fireball-sprite
+org $01A7EF : db $00 ; mario-sprite
+;org $029500 : db $00 ; capespin-sprite -- made redundant by capespin consistency patch
+
+; make Bob-Omb explosions interact with Mario and other sprites every frame
+org $0280A8 : bra $05
+org $0280B2 : bra $08
+
+; adjust Yellow Koopa jump frame rule
+org $018898 : BRA $05
 
 ; load sprites from level data every frame
 org $02A7FF : db $00
