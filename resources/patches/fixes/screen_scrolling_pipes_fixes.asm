@@ -300,9 +300,13 @@ FixHDMA: ;>JSL from $00C5CE
 GetOnYoshiExcept: ;>JML from $01ED44
 	LDA $7D				;\Restore speed check in order to get on yoshi.
 	BMI .NoYoshi			;/
+	LDA $0100|!addr 		;\
+	CMP #$07				;| mitigate an issue on titlescreen when it comes to freeram
+    BNE .YesYoshi			;/
 	LDA !Freeram_SSP_PipeDir	;\if in pipe mode, don't get on yoshi while entering.
 	AND.b #%00001111		;/
 	BNE .NoYoshi
+	.YesYoshi
 	JML $01ED48		;>Get on yoshi
 
 	.NoYoshi
