@@ -18,6 +18,7 @@
 <li><a href="#no-bps">Where is the BPS patch to use the baserom?</a></li>
 <li><a href="#removing-things">How do I remove things from the baserom?</a></li>
 <li><a href="#hide-statusbar">How do I hide the status bar?</a></li>
+<li><a href="#midway-power-up">Why are midways are giving me a power-up?</a></li>
 <li><a href="#fast-retry">Does this have Fast Retry?</a></li>
 <li><a href="#block-graphics">Why are my block graphics not looking right?</a></li>
 <li><a href="#turn-off-animation">Why are there weird tiles in the background?</a></li>
@@ -60,13 +61,21 @@ init:
     <li>Run "Update" in Callisto to insert the UberASM changes in your project.</li>
 </ul>
 <hr>
+<h3 id="midway-power-up">Why are midways are giving me a power-up?</h3>
+<p>The baserom aims to stay close to the vanilla experience so midways keep their default behaviour of making Mario big when they are collected, but this can be overridden in the baserom in a couple ways:</p>
+<ul>
+    <li>In individual levels, you can insert the <b>B3</b> <a href="UberASM Objects.html">UberASM Object</a> to disable this behaviour.</li>
+    <li>For a hack-wide change, you can reconfigure the Retry System by changing the <code>!midway_powerup</code> option in the <span class="dir">tools/uberasmtool/retry_config/settings.asm</span> file.</li>
+</ul>
+<p>After making changes to any of the above, run "Update" in Callisto to insert the UberASM changes in your project.</p>
+<hr>
 <h3 id="fast-retry">Does this have Fast Retry?</h3>
-<p>Yes! By default the baserom is configured to use the vanilla death routine but you can enable retry in a level using a custom object. The <a href="UberASM Objects.html#retry-objects">UberASM Objects</a> page has a section for the retry system with details.</p>
+<p>By default the baserom is configured to use the vanilla death routine but you can enable retry in a level using a custom object. The <a href="UberASM Objects.html#retry-objects">UberASM Objects</a> page has a section for the retry system with details.</p>
 <p>For hack-wide changes to the Retry System you can edit its global configuration files in <span class="dir">tools/uberasmtool/retry_config</span>.</p>
 <ul>
-    <li><code>settings.asm</code> &ndash; Change the global settings for the retry system.</li>
-    <li><code>tables.asm</code> &ndash; Several options tables for changing per-level settings.</li>
-    <li><code>sprite_status_bar_tables.asm</code> &ndash; More configuration tables for displaying the sprite status bar items.</li>
+    <li><b>settings.asm</b> &ndash; Change the global settings for the retry system.</li>
+    <li><b>sprite_status_bar_tables.asm</b> &ndash; More configuration tables for displaying the sprite status bar items.</li>
+    <li><b>tables.asm</b> &ndash; Several options tables for changing per-level settings.</li>
 </ul>
 <p>After making changes to any of the above, run "Update" in Callisto to insert the UberASM changes in your project.</p>
 <hr>
@@ -75,18 +84,16 @@ init:
 <p>Many of the custom global block in the baserom use ExGraphics, loading <code>E17</code> into the <b>FG2</b> slot in the Super GFX Bypass dialog will make the blocks appear as they are intended to.</p>
 <hr>
 <h3 id="turn-off-animation">Why are there weird tiles in the background?</h3>
-<p>If you're using a background resource that uses slot <code>BG3</code> you may notice some of the tiles from the <a href="./ExAnimation.html">baserom's ExAnimations</a> in its tilemap, this is because the addresses at the end of that slot are being used as the destinations for those animations. To stop this from happening you can disable global animations in that level from the menu: "Level &rarr; Edit Animation Settings" and uncheck "Enable Lunar Magic's global animations".</p>
+<p>If you're using a background resource that uses slot <b>BG3</b> you may notice some of the tiles from the <a href="./ExAnimation.html">baserom's ExAnimations</a> in its tilemap, this is because the addresses at the end of that slot are being used as the destinations for those animations. To stop this from happening you can disable global animations in that level from the menu: "Level &rarr; Edit Animation Settings" and uncheck "Enable Lunar Magic's global animations".</p>
 <hr>
 <h3 id="sa1">Is the baserom SA-1 compatible?</h3>
-<p>Yes! The baserom's resources are all compatible with SA-1, but the baserom itself is configured to be FastROM by default. However to use SA-1 it only takes a couple steps to switch over to it:</p>
-<p>In the <span class="dir">buildtool</span> folder, open the "resources.toml" file and look for the <code>initial_patch</code> lines, something like the following.</p>
+<p>The baserom's resources are all compatible with SA-1, but the baserom itself is configured to be FastROM by default. However to use SA-1 it only takes a couple steps to switch over to it:</p>
+<p>In the <span class="dir">buildtool</span> folder, open the "build.toml" file and look for the <code>initial_patch</code> lines, something like the following.</p>
 <pre>
-# Fastrom initial patch
-initial_patch = "resources/initial_patches/fastrom.bps"
-
-# Uncomment the line below if you would like to use SA-1.
-# and comment out the one above
-#initial_patch = "resources/initial_patches/sa1.bps"
+# The initial patch setting for the project
+[resources]
+    initial_patch = "resources/initial_patches/fastrom.bps" # FastROM
+    #initial_patch = "resources/initial_patches/sa1.bps"    # SA-1
 </pre>
 <p>To change which initial patch is used, comment out (i.e. move the "#") the relevant <code>initial_patch</code> line, and "Rebuild" your project in Callisto to make the change.</p>
 <p class="infobox">You will have to check if any additional resources that you add are SA-1 compatible when doing this.</p>
