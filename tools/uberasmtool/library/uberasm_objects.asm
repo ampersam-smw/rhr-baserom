@@ -18,7 +18,7 @@ endmacro
 routines:
 .init
     %ObjectRoutine($99, no_horizontal_scroll)
-    ; %ObjectRoutine($9A, )
+    %ObjectRoutine($9A, invisible_mario)
     %ObjectRoutine($9B, toggle_block_duplication)
     %ObjectRoutine($9C, toggle_status_bar)
     %ObjectRoutine($9D, toggle_lr_scroll)
@@ -47,6 +47,7 @@ routines:
 
 .main
     %ObjectRoutine($98, free_vertical_scroll)
+    %ObjectRoutine($9A, invisible_mario)
     %ObjectRoutine($9E, enable_sfx_echo)
     %ObjectRoutine($A0, no_powerups)
     %ObjectRoutine($A3, eight_frame_float)
@@ -164,6 +165,9 @@ no_horizontal_scroll:
     rts
 
 ; Extended Object 9A
+invisible_mario:
+    lda #$7F : sta $78 ; hide the player graphics
+    rts
 
 ; Extended Object 9B - Toggle block duplication
 toggle_block_duplication:
