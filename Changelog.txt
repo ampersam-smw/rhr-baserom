@@ -2,6 +2,7 @@ v5.11
 - updated the tools to their latest versions (not Lunar Magic though)
 - rework the freeram clearing resource
 - fix outdated teleport_direct routine
+- upgraded question mark blocks
 - adjust some of the tweaks
 - add patch to sprite spawn frame rule
 - add uberasm object to make Mario invisible
