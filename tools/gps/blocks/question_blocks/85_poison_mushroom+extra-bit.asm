@@ -17,11 +17,11 @@
 incsrc question_block_base.asm
 
 ; Spawn specific defines
-!Sprite = $0F               ; sprite number
+!Sprite = $85               ; sprite number
 !IsCustom = 0               ; 0 for normal, 1 for custom sprite
-!ExtraBit = 0               ; Set extra bit of sprite
-!State = $08                ; $08 for normal, $09 for carryable sprites
-!1540_val = $FF             ; If you use powerups, this should be $3E
+!ExtraBit = 1               ; Set extra bit of sprite
+!State = $09                ; $08 for normal, $09 for carryable sprites
+!1540_val = $3E             ; If you use powerups, this should be $3E
                             ; Carryable sprites use it as the stun timer
 
 !ExtraByte1 = $00           ; First extra byte
@@ -96,4 +96,4 @@ endif
 .Return:
 RTS
 
-print "A question mark block which contains a G(al)oomba."
+print "A question mark block which contains a lethal Poison Mushroom."

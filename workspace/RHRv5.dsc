@@ -29,20 +29,22 @@
 2ad	0	Disable horizontal camera scroll. (Remove graphics in Map16 when finished.)
 2ae	0	Enable vertical camera scroll. (Remove graphics in Map16 when finished.)
 2af	0	Disable vertical camera scroll. (Remove graphics in Map16 when finished.)
-2b0	0	Question block that always spawns a Mushroom.
-2b1	0	Question block that always spawns a Fire Flower.
-2b2	0	Question block that always spawns a Cape Feather.
-2b3	0	Question block that always spawns a 1-Up.
-2b4	0	Question block that always spawns a Vine.
-2b5	0	Question block that always spawns a P-Balloon.
-2b6	0	Question block that always spawns a Key.
-2b7	0	Question block that always spawns a Poison Mushroom.
-2b8	0	Question block that always spawns a Galoomba.
-2b9	0	Question block that always spawns a Fish.
-2ba	0	Question block that always spawns a Blue P-Switch/POW.
-2bb	0	Question block that always spawns a Silver P-Switch/POW.
-2bc	0	Question block that always spawns a Spring.
-2bd	0	Question block that always spawns Roulette power up.
+2b0	0	A question mark block which always contains a Mushroom.
+2b1	0	A question mark block which always contains a Fire Flower.
+2b2	0	A question mark block which always contains a Cape Feather.
+2b3	0	A question mark block which contains sprite 1-Up if Yoshi exists, else Yoshi in an egg.
+2b4	0	A question mark block which always contains a Vine.
+2b5	0	A question mark block which always contains a P-Balloon.
+2b6	0	A question mark block which always contains a Key.
+2b7	0	A question mark block which contains a Throw Block.
+2b8	0	A question mark block which contains a normal Poison Mushroom.
+2b9	0	A question mark block which contains a lethal Poison Mushroom.
+2ba	0	A question mark block which contains a G(al)oomba.
+2bb	0	A question mark block which contains a Fish.
+2bc	0	A question mark block which always contains a Blue P-Switch.
+2bd	0	A question mark block which always contains a Silver P-Switch.
+2be	0	A question mark block which contains a portable Springboard.
+2bf	0	A question mark block which contains a Roulette Power-up.
 300	0	Top cap of vertical 2-way pipe, left side.
 301	0	Top cap of vertical 2-way pipe, right side.
 302	0	Part of pipe that Mario moves through.
