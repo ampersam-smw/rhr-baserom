@@ -60,19 +60,19 @@
 02B0:0130 question_blocks/74_mushroom.asm
 02B1:0130 question_blocks/75_fire_flower.asm
 02B2:0130 question_blocks/77_feather.asm
-02B3:0130 question_blocks/78_1up.asm
+02B3:0130 question_blocks/35_egg.asm
 02B4:0130 question_blocks/79_vine.asm
 02B5:0130 question_blocks/7D_p-balloon.asm
 02B6:0130 question_blocks/80_key.asm
-02B7:0130 question_blocks/85_poison_mushroom.asm
-02B8:0130 question_blocks/0F_goomba.asm
-02B9:0130 question_blocks/18_fish.asm
-02BA:0130 question_blocks/3E_blue_pswitch.asm
-02BB:0130 question_blocks/3E_silver_pswitch.asm
-02BC:0130 question_blocks/2F_spring.asm
-02BD:0130 question_blocks/81_roulette_power-up.asm
-;02BE ; reserved by baserom
-;02BF ; reserved by baserom
+02B7:0130 question_blocks/53_throw_block.asm
+02B8:0130 question_blocks/85_poison_mushroom.asm
+02B9:0130 question_blocks/85_poison_mushroom+extra-bit.asm
+02BA:0130 question_blocks/0F_goomba.asm
+02BB:0130 question_blocks/18_fish.asm
+02BC:0130 question_blocks/3E_blue_pswitch.asm
+02BD:0130 question_blocks/3E_silver_pswitch.asm
+02BE:0130 question_blocks/2F_spring.asm
+02BF:0130 question_blocks/81_roulette_power-up.asm
 
 ; PAGE 03 OF MAP16 --------------------------------------------------
 
