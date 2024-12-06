@@ -4,17 +4,23 @@
 # ignore readme files
 docs/tools/*
 # ignore AddMusicK files
-tools/addmusick/asm/*
-tools/addmusick/SPCs/*.spc
-tools/addmusick/stats/*.txt
-tools/addmusick/music/originals/*
-tools/addmusick/samples*
-tools/addmusick/temp*
+tools/addmusick/*.pl
 tools/addmusick/1DF9/*
 tools/addmusick/1DFC/*
-tools/addmusick/Visualizations/*
-tools/addmusick/*.pl
 tools/addmusick/Addmusic_*.txt
+tools/addmusick/asm/*
+tools/addmusick/asm/SNES/bin/*.bin
+tools/addmusick/asm/SNES/SongSampleList.asm
+tools/addmusick/music/originals/*
+tools/addmusick/readme_files/
+tools/addmusick/readme.html
+tools/addmusick/samples*
+tools/addmusick/SPCs/*.spc
+tools/addmusick/SPCs/1DF9
+tools/addmusick/stats/*.txt
+tools/addmusick/temp.*
+tools/addmusick/temp*
+tools/addmusick/Visualizations/*
 # ignore GPS files
 tools/gps/blocks/template.asm
 tools/gps/block_boilerplate.asm
@@ -27,6 +33,8 @@ tools/gps/routines
 tools/flips/flipscfg.bin
 # ignore Lunar Magic Files
 tools/lunar_magic/usertoolbar*
+tools/lunar_magic/*.chm
+tools/lunar_magic/*.chw
 # ignore PIXI files
 tools/pixi/asm
 tools/pixi/routines
@@ -38,21 +46,18 @@ tools/uberasmtool/asm
 tools/uberasmtool/routines
 # ignore list files
 tools/*/list.txt
-sysLMRestore
 workspace/temp/*
+workspace/sysLMRestore
 conflicts.txt
 failed_save.txt
 .dependencies
 .callisto
 .is_setup
 .first_build_done
-temp/*
-temp.*
 # Ignore particular file types
 *.*~
+*.7z
 *.bps
-*.chm
-*.chw
 *.dll
 *.exe
 *.extmod

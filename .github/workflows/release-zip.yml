@@ -1,0 +1,48 @@
+name: Create Zip on Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-zip:
+    name: Build Release Zip
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Define Exclusions and Create Zip
+      run: |
+        # rsync exclusions
+        EXCLUDES=(
+          ".git*"
+          ".gitkeep"
+          ".gitignore"
+          ".github"
+          "Readme.md"
+        )
+
+        # create args for rsync
+        EXCLUDE_ARGS=""
+        for item in "${EXCLUDES[@]}"; do
+          EXCLUDE_ARGS+="--exclude=${item} "
+        done
+
+        # create zip with rsync
+        mkdir out
+        eval "rsync -av --progress . ./out ${EXCLUDE_ARGS}"
+        cd out
+        zip -r ../rhr-baserom-${{ github.event.release.tag_name }}.zip .
+        cd ..
+
+    - name: Install GitHub CLI
+      run: |
+        sudo apt-get install -y gh
+
+    - name: Upload Release Asset
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release upload ${{ github.event.release.tag_name }} rhr-baserom-${{ github.event.release.tag_name }}.zip
