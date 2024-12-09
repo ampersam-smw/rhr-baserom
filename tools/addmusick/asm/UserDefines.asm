@@ -229,6 +229,28 @@ includeonce
 ;=======================================
 
 ;=======================================
+;---------------
+!BowserSongOverride = !false
+
+;Default setting: !false
+;Vanilla SMW setting: !true
+;---------------
+; When set to true, the !Bowser song overrides the default level song on
+; load during the Bowser fight.
+;=======================================
+
+;=======================================
+;---------------
+!WelcomeSongOverride = !false
+
+;Default setting: !false
+;Vanilla SMW setting: !true
+;---------------
+; When set to true, the !Welcome song overrides the default level song on
+; load during the intro level after loading a new file.
+;=======================================
+
+;=======================================
 ; If you've changed list.txt and plan on using the original SMW songs
 ; change these constants to whatever they are in list.txt
 ; For example, if you changed the "Stage Clear" music to be number 9,
@@ -251,6 +273,7 @@ includeonce
 !GhostHouse	= $10
 !Castle		= $11
 !SwitchPalace	= $12
+!CastleDestructionFanfare = $13
 !Welcome	= $13
 !RescueEgg	= $14
 !Title		= $15

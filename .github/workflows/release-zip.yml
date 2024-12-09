@@ -36,6 +36,7 @@ jobs:
         cd out
         zip -r ../rhr-baserom-${{ github.event.release.tag_name }}.zip .
         cd ..
+        rm -r out
 
     - name: Install GitHub CLI
       run: |
