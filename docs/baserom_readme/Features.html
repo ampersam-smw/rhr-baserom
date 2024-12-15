@@ -53,11 +53,11 @@
 <p>You will see a three big of tables: one for the Item Box labelled <code>item_box</code>, one for the timer labelled <code>timer</code>, and one for both normal and Yoshi coins labelled <code>coins</code> all three filled with pre-defined flags. Each row of the table corresponds to level addresses, 16 per row starting at <code>00</code>, so if you would like to enable/disable part of the sprite status bar for a particular level you will have to change the flag set at each level's particular address.</p>
 <p>You can add numerical values to the tables manually by following the instructions at the top of the ASM file but these flags are a baserom modification so you don't have to remember what value the baserom uses for each tile:</p>
 <ul>
-    <li><code>!itemb_tile</code> corresponds to the tile used for the item box, use this in the <code>item_box</code> table.</li>
-    <li><code>!timer_tile</code> corresponds to the tiles used for the timer, use this in the <code>timer</code> table.</li>
-    <li><code>!coins_tile</code> corresponds to the tiles used for the coins, use this in the <code>coins</code> table.</li>
-    <li><code>!no_display</code> don't display anything, can be used in all tables.</li>
-    <li><code>!always_off</code> same as above but should always be left in place in the tables.</li>
+    <li><code>!ITEMB</code> corresponds to the tile used for the item box, use this in the <code>item_box</code> table.</li>
+    <li><code>!TIMER</code> corresponds to the tiles used for the timer, use this in the <code>timer</code> table.</li>
+    <li><code>!COINS</code> corresponds to the tiles used for the coins, use this in the <code>coins</code> table.</li>
+    <li><code>!__off</code> don't display anything, can be used in all tables.</li>
+    <li><code>!NEVER</code> same as above but should always be left in place in the tables.</li>
 </ul>
 <hr>
 <h3 id="clear-checkpoints">Clear Saved Checkpoints</h3>
@@ -89,7 +89,7 @@ main:
 </ul>
 <center><img src="./img/retry_indicator_sprite.png" alt="Screenshot of the sprite tile retry indicator" title="Screenshot of the sprite tile retry indicator"></center>
 <h4>Configuring</h4>
-<p>This feature has a number of configuration options, if you would like to change how it displays you can edit the "retry_indicator.asm" in the <span class="dir">tools/uberasmtool/library folder</span>.</p>
+<p>This feature has a number of configuration options, if you would like to change how it displays you can edit the "retry_indicator.asm" in the <span class="dir">tools/uberasmtool/library</span> folder.</p>
 <small>Found in version 5.6 of baserom or later. Sprite tile indicator in version 5.7 or later.</small>
 <hr>
 <h3 id="ow-autosave">Autosave on Overworld</h3>
