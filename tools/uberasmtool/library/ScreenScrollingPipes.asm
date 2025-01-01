@@ -138,6 +138,8 @@ main:
 		endif
 	LDA #$01			;\allow vertical scroll up.
 	STA $1404|!addr			;/
+	LDA #$03			;\make invuln in pipe
+	STA $1497|!addr		;/
 	STZ $14A6|!addr			;>no spinning.
 	STZ $1407|!addr			;>so mario cannot fly out of the cap
 	STZ $72				;>zero air flag.
@@ -193,7 +195,7 @@ main:
 				STA !Freeram_SSP_PipeDir	;>And set pipe direction from cap to stem speed with the same direction.
 
 				....StemSpeedDone
-					BRA .pose
+					JMP .pose
 
 		...ExitingPipe			;
 			LDA !Freeram_SSP_PipeTmr	;\if timer already = 0, then skip the reset (so it does it once).
@@ -237,6 +239,7 @@ main:
 			STZ $9D			;>back in motion
 		endif
 			STZ $13F9|!addr			;>go in front
+			STZ $1497|!addr		;> make vulnerable
 			STZ $71				;>mario can move
 			STZ $73				;>stop crouching (when going exiting down on yoshi)
 			STZ $140D|!addr			;>no spinjump out the pipe (possable if both enter and exit caps are bottoms)
