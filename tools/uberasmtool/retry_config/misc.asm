@@ -4,7 +4,7 @@
 ; Retry version number (Va.b.c) to write in ROM.
 !version_a = 0
 !version_b = 6
-!version_c = 0
+!version_c = 1
 
 ; What button exits the level while the game is paused (by default, select).
 !exit_level_buttons_addr = $16

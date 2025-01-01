@@ -93,3 +93,4 @@ endif
     %incsrc(code/hijacks,initial_facing_fix)
     %incsrc(code/hijacks,item_box_fix)
     %incsrc(code/hijacks,remove_status_bar)
+    %incsrc(code/hijacks,vanilla_boss_gm13)

@@ -87,7 +87,12 @@ if !sprite_status_bar
     ; Initialize and draw the status bar during the fadein
     jsr sprite_status_bar_init
     jsr sprite_status_bar_main
+
+    ; Skip updating the $0400 table during mode 7 boss
+    ; initialization to avoid a game crash (???)
+    lda $0D9B|!addr : bmi +
     jsr shared_update_0400
++
 endif
 
 main:

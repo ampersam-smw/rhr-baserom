@@ -49,7 +49,7 @@ init:
     ; and not parked outside of a Castle/Ghost House.
     lda !ram_is_respawning : beq +
     lda $1B95|!addr : bne +
-if not(!counterbreak_yoshi)
+if !counterbreak_yoshi != 1 && !counterbreak_yoshi != 2
     lda $1B9B|!addr : bne +
 endif
     stz $0DC1|!addr

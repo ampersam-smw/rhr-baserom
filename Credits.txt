@@ -106,7 +106,7 @@ SA-1 Pack v1.40** - Arujus, Vitor Vilela - https://smwc.me/s/25938
 -- UberASM --
 Consistent 8 Frame Cape Float Delay* - DJLocks, xHF01x - https://smwc.me/s/28534
 ON/OFF Double Hit fix - Kevin - https://smwc.me/s/30011
-Retry System v0.6.0 - Kevin - https://github.com/kkevinm/retry-system/releases/tag/v0.6.0
+UberASM Retry System - Kevin - https://github.com/kkevinm/retry-system/
 UberASM Objects System - AmperSam, underway, MarioFanGamer
 
 -- Blocks --

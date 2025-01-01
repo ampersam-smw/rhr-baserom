@@ -26,8 +26,10 @@
 ; Note: you can also change this on the fly (see "docs/ram_map.txt").
     !midway_powerup = 1
 
-; Counterbreak options reset the corresponding counters/items when the player dies and when going to the Overworld.
+; Counterbreak options reset the corresponding counters/items when the player dies and/or when going to the Overworld.
 ; Useful for Kaizo and collab hacks.
+; 0 = disabled, 1 = enabled for both respawning and going to the Overworld
+; 2 = enabled just for respawning, 3 = enabled just for going to the Overworld
     !counterbreak_yoshi = 1
     !counterbreak_powerup = 1
     !counterbreak_item_box = 1
@@ -76,7 +78,7 @@
     !always_start_select = 1
 
 ; If 1, the camera won't scroll vertically during Mario's death animation.
-    !death_camera_lock = 1
+    !death_camera_lock = 0
 
 ; If 1, DSX (dynamic) sprites status is reset on level load.
     !reset_dsx = 1
@@ -90,7 +92,7 @@
 ; 0 = vanilla (after dying a glitched version of the title screen will load,
 ;     causing a softlock. Use this if you either don't care or want to do something
 ;     custom with it.)
-; 1 = play vanilla death animation and reload title screen.
+; 1 = play vanilla death animation and reload title screen (note: death music only works with AddmusicK!).
 ; 2 = instantly reload the title screen.
     !title_death_behavior = 1
 

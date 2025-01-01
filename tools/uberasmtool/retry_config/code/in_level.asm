@@ -211,8 +211,8 @@ if !title_death_behavior != 0
     jsr reset_addresses
     jsr reset_music
 
-    ; ...and reload the title screen.
-    lda #$02 : sta $0100|!addr
+    ; ...and set the flag to reload the title screen.
+    lda !ram_is_dying : ora #$40 : sta !ram_is_dying
 endif
 
 ...return:
@@ -383,9 +383,9 @@ endif
     stz $89
     rtl
 
-    ; Enable title screen reloading.
+    ; Set the flag to enable title screen reloading.
 .title:
-    lda #$02 : sta $0100|!addr
+    lda !ram_is_dying : ora #$40 : sta !ram_is_dying
     rtl
 
 ;=====================================
@@ -454,12 +454,12 @@ if !reset_boo_rings
 endif
 
     ; Reset bonus stars counter.
-if !counterbreak_bonus_stars
+if !counterbreak_bonus_stars == 1 || !counterbreak_bonus_stars == 2
     stz $0F48|!addr
 endif
 
     ; Reset score counter.
-if !counterbreak_score
+if !counterbreak_score == 1 || !counterbreak_score == 2
     stz $0F34|!addr
     stz $0F36|!addr
     stz $0F38|!addr
@@ -471,17 +471,17 @@ endif
     lda !ram_timer+2 : and #$0F : sta $0F33|!addr
 
     ; Reset powerup.
-if !counterbreak_powerup
+if !counterbreak_powerup == 1 || !counterbreak_powerup == 2
     stz $19
 endif
 
     ; Reset item box.
-if !counterbreak_item_box
+if !counterbreak_item_box == 1 || !counterbreak_item_box == 2
     stz $0DC2|!addr
 endif
 
     ; Reset coin counter.
-if !counterbreak_coins
+if !counterbreak_coins == 1 || !counterbreak_coins == 2
     stz $0DBF|!addr
 endif
 
