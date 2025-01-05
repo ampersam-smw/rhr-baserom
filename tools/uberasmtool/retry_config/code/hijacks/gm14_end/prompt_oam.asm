@@ -1,3 +1,5 @@
+if not(!no_prompt_draw)
+
 ; Check if palette values make sense.
 assert !letter_palette >= $08 && !letter_palette <= $0F, "Error: \!letter_palette should be between $08 and $0F."
 assert !cursor_palette >= $08 && !cursor_palette <= $0F, "Error: \!cursor_palette should be between $08 and $0F."
@@ -342,3 +344,5 @@ defrag_oam:
 .end:
     sep #$10
     rts
+
+endif

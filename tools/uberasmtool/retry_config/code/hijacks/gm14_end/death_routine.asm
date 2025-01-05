@@ -5,22 +5,29 @@
 ; This runs just before AMK, so we can kill the death song before it starts.
 ;=====================================
 death_routine:
-if !title_death_behavior != 0
-    ; If the reload title screen flag is set...
-    lda !ram_is_dying : and #$40 : beq .no_title_reload
+    ; If the reload level flag is set...
+    lda !ram_is_dying : bit #$40 : beq .no_reload
 
-    ; ...actually reload it!
+.reload:
+if !title_death_behavior != 0
+    ; (Check if we need to reload a level or the title screen)
+    bit #$20 : beq ..level
+
+..title:
+    ; ...reload the title screen!
     lda #$02 : sta $0100|!addr
     rts
 
-.no_title_reload:
+..level:
 endif
+    ; ...reload the level!
+    lda #$0F : sta $0100|!addr
+    rts
 
+.no_reload:
     ; Only update death counter and call the death routine once
     ; but handle the death song every frame to avoid issues with custom codes that call $00F606 every frame.
-    lda !ram_is_dying : beq .first_frame
-    cmp #$40 : beq .first_frame
-    bra .handle_song
+    cmp #$00 : bne .handle_song
 
 .first_frame:
     ; Set the dying flag.

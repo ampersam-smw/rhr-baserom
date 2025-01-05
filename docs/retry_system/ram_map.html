@@ -144,7 +144,14 @@
       <td><code>$0E</code></td>
       <td><code>$01</code></td>
       <td>Internal</td>
-      <td class="no-center">Flag set when Mario dies. Used to skip the death music when applicable (but only on the first death frame) and to handle the prompt/respawn. Reset on level load.</td>
+      <td class="no-center">Flag set when Mario dies. It's used for a few processes that happen when Mario dies. Format: <code>srr----d</code>
+        <ul>
+          <li><code>s</code>: when not set but the <code>d</code> bit is set, the death sfx is played and this bit is set. This ensures the sfx is only played once.</li>
+          <li><code>rr</code>: when set to <code>10</code>, the current level is reloaded by switching to gamemode <code>$0F</code>. When set to <code>11</code>, the title screen is reloaded by switching to gamemode <code>$02</code>.</li>
+          <li><code>d</code>: when not set, if Mario is in the death animation, a few one-shot death activities are performed (e.g. increasing the death counter), then the bit is set. This ensures that those activites are not repeated.</li>
+          <li><code>-</code>: currently unused.</li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td><code>9D_backup</code></td>

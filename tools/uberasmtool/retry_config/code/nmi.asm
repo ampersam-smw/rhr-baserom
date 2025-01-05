@@ -14,6 +14,9 @@ if !sprite_status_bar
     jsr sprite_status_bar_nmi
 endif
 
+if !no_prompt_draw
+    rtl
+else
     ; Skip if it's not time to upload the tiles.
     lda !ram_update_request : bne .upload
     rtl
@@ -111,3 +114,5 @@ endif
     dw vram_addr(!tile_x)
     dw vram_addr(!tile_i)
 ..end:
+
+endif

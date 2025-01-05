@@ -90,96 +90,10 @@ endif
 if !death_camera_lock
     stz $1412|!addr
 endif
-
-if !prompt_freeze
-    ; Force sprites and animations to lock.
-    lda #$01 : sta $9D
-
-if !prompt_freeze == 2
-    ; Freeze animations that use $13.
-    lda !ram_prompt_phase : beq +
-    cmp #$05 : bcs +
-    dec $13
-+   
-    ; Freeze vanilla layer 3 tides.
-    lda $1403|!addr : beq +
-    lda $145E|!addr : lsr : bcs +
-    dec $22
-+   
-    ; Freeze Shell-less Koopas and Sumo Bro's Lightning.
-    ldx.b #!sprite_slots-1
--   lda !14C8,x : cmp #$08 : bne ++
-    lda !extra_bits,x : and #$08 : bne ++
-    lda !9E,x : cmp #$04 : bcc +
-    cmp #$2B : bne ++
-    ; Sumo Bro's Lightning
-    lda.l !rom_sumo_bro_lightning_y_speed : eor #$FF : inc : sta !AA,x
-    jsl $01801A|!bank
-    bra ++
-+   ; Shell-less Koopas
-    stz !sprite_speed_y,x
-++  dex : bpl -
     
-    ; Stop earthquake.
-    stz $1887|!addr
+    ; Freeze the screen.
+    jsr screen_freeze
 
-    ; Stop lightning effect.
-    stz $1FFC|!addr : stz $1FFD|!addr
-
-    ; Stop Reappearing Boos timer.
-    inc $190A|!addr
-
-    ; Freeze bonus game 1UPs
-    lda $18B8|!addr : beq +
-    ldx.b #20-1
-    lda #$01
--   cmp $1892|!addr,x : bne ++
-    stz $1E52|!addr,x
-    stz $1E66|!addr,x
-++  dex : bpl -
-+
-    ; Prevent swallow timer from decrementing
-    lda $18AC|!addr : beq +
-    cmp #$FF : beq +
-    lda $14 : and #$03 : bne +
-    inc $18AC|!addr
-+
-endif
-else
-    ; Force sprites and animations to run.
-    stz $9D
-
-    ; Prevent timer from ticking down.
-    inc $0F30|!addr
-
-    ; Prevent messages from activating.
-    stz $1426|!addr
-
-    ; Disable autoscrollers.
-    lda $143E|!addr : beq ++
-    cmp #$01 : beq +
-    cmp #$0C : bne ++
-+   stz $143E|!addr
-++
-endif
-
-    ; Skip Yoshi's hatch animation.
-    stz $18E8|!addr
-
-    ; Reset Yoshi's swallow timer.
-    ldx $18E2|!addr : beq +
-    stz !1564-1,x
-
-    ; Prevent Yoshi's tongue from extending.
-    lda !1594-1,x : cmp #$01 : bne ++
-    lda !151C-1,x : sec : sbc.l !rom_yoshi_tongue_extend_speed : bmi +
-    sta !151C-1,x
-    bra +
-++  
-    ; Prevent Yoshi's tongue from retracting.
-    cmp #$02 : bne +
-    sta !1558-1,x
-+   
     ; Don't respawn if not infinite lives and we're about to game over.
 if not(!infinite_lives)
     jsr shared_get_bitwise_mask
@@ -212,7 +126,7 @@ if !title_death_behavior != 0
     jsr reset_music
 
     ; ...and set the flag to reload the title screen.
-    lda !ram_is_dying : ora #$40 : sta !ram_is_dying
+    jmp ..reload_title_screen
 endif
 
 ...return:
@@ -373,20 +287,121 @@ endif
     ; Skip No Yoshi intros.
     stz $141D|!addr
 
+if !title_death_behavior != 0
     ; Check if we need to reload a level or the title screen.
-    lda $0100|!addr : cmp #$07 : beq .title
+    lda $0100|!addr : cmp #$0F : bcs ..reload_level
 
-    ; Enable level teleport.
-.level:
-    lda #$06 : sta $71
-    stz $88
-    stz $89
+..reload_title_screen:
+    ; Set the flag to reload the title screen.
+    lda #$60 : sta !ram_is_dying
     rtl
 
-    ; Set the flag to enable title screen reloading.
-.title:
-    lda !ram_is_dying : ora #$40 : sta !ram_is_dying
+..reload_level:
+endif
+
+    ; Set the flag to reload the level.
+    lda #$40 : sta !ram_is_dying
     rtl
+
+;=====================================
+; screen_freeze routine
+;
+; Routine to freeze sprites, animations, timer etc. while the prompt is displayed.
+; If !prompt_freeze == 0, most stuff is kept running except for timer, autoscrollers, message boxes and some Yoshi stuff.
+; If !prompt_freeze == 1, stuff that doesn't obey to the $9D flag will still run.
+; If !prompt_freeze == 2, everything should freeze (although I might have missed some).
+;=====================================
+screen_freeze:
+if !prompt_freeze
+    ; Force sprites and animations to lock.
+    lda #$01 : sta $9D
+
+if !prompt_freeze == 2
+    ; Freeze animations that use $13.
+    lda !ram_prompt_phase : beq +
+    cmp #$05 : bcs +
+    dec $13
++   
+    ; Freeze vanilla layer 3 tides.
+    lda $1403|!addr : beq +
+    lda $145E|!addr : lsr : bcs +
+    dec $22
++   
+    ; Freeze Shell-less Koopas and Sumo Bro's Lightning.
+    ldx.b #!sprite_slots-1
+-   lda !14C8,x : cmp #$08 : bne ++
+    lda !extra_bits,x : and #$08 : bne ++
+    lda !9E,x : cmp #$04 : bcc +
+    cmp #$2B : bne ++
+    ; Sumo Bro's Lightning
+    lda.l !rom_sumo_bro_lightning_y_speed : eor #$FF : inc : sta !AA,x
+    jsl $01801A|!bank
+    bra ++
++   ; Shell-less Koopas
+    stz !sprite_speed_y,x
+++  dex : bpl -
+    
+    ; Stop earthquake.
+    stz $1887|!addr
+
+    ; Stop lightning effect.
+    stz $1FFC|!addr : stz $1FFD|!addr
+
+    ; Stop Reappearing Boos timer.
+    inc $190A|!addr
+
+    ; Freeze bonus game 1UPs
+    lda $18B8|!addr : beq +
+    ldx.b #20-1
+    lda #$01
+-   cmp $1892|!addr,x : bne ++
+    stz $1E52|!addr,x
+    stz $1E66|!addr,x
+++  dex : bpl -
++
+    ; Prevent swallow timer from decrementing
+    lda $18AC|!addr : beq +
+    cmp #$FF : beq +
+    lda $14 : and #$03 : bne +
+    inc $18AC|!addr
++
+endif
+else
+    ; Force sprites and animations to run.
+    stz $9D
+
+    ; Prevent timer from ticking down.
+    inc $0F30|!addr
+
+    ; Prevent messages from activating.
+    stz $1426|!addr
+
+    ; Disable autoscrollers.
+    lda $143E|!addr : beq ++
+    cmp #$01 : beq +
+    cmp #$0C : bne ++
++   stz $143E|!addr
+++
+endif
+
+    ; Skip Yoshi's hatch animation.
+    stz $18E8|!addr
+
+    ; Reset Yoshi's swallow timer.
+    ldx $18E2|!addr : beq +
+    stz !1564-1,x
+
+    ; Prevent Yoshi's tongue from extending.
+    lda !1594-1,x : cmp #$01 : bne ++
+    lda !151C-1,x : sec : sbc.l !rom_yoshi_tongue_extend_speed : bmi +
+    sta !151C-1,x
+    bra +
+++  
+    ; Prevent Yoshi's tongue from retracting.
+    cmp #$02 : bne +
+    sta !1558-1,x
++   
+    rts
 
 ;=====================================
 ; reset_addresses routine

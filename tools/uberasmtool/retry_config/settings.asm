@@ -100,6 +100,7 @@
 
 ; SFX to play when dying (!death_sfx = $00 -> no SFX).
 ; Only played if not playing the death song (for example, it's not played if the level uses vanilla death).
+; You can change $1DF9 to $1DFB if you want a song to play on death (for example, if you want vanilla death music with instant Retry).
     !death_sfx = $38
     !death_sfx_addr = $1DFC|!addr
 
@@ -211,6 +212,12 @@
 ; For more information on these values, see $7E0016 on the SMWCentral RAM Map.
     !exit_button = %00100000
     !exit_button_address = $16
+
+; If 1, the Retry prompt won't be drawn to the screen (but still function normally).
+; Use this for a minimalistic Retry, without having to use the instant option.
+; You should also use !no_prompt_box = 1 or the black box will still appear (also you probably want !no_exit_option = 1).
+; Note that this renders all the prompt options below useless (and no sprite GFX space needs to be reserved).
+    !no_prompt_draw = 0
 
 ; X/Y position of the first tile in the prompt (the cursor on the first line).
 ; Changing this only works if the black box is disabled (if enabled,

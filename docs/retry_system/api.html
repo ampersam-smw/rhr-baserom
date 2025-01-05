@@ -38,9 +38,33 @@
 
   <h3>Index</h3>
   <ol>
+    <li><a href="#respawn_in_level">Respawn in level</a></li>
+    <li><a href="#save_game">Save game</a></li>
     <li><a href="#reset_level_checkpoint">Reset level checkpoint</a></li>
     <li><a href="#reset_all_checkpoints">Reset all checkpoints</a></li>
   </ol>
+  <br/>
+
+  <h3 id="respawn_in_level">Respawn in level</h3>
+  <p><code>JSL retry_api_respawn_in_level</code></p>
+  <p>Call this to make the player respawn in the current level at the last checkpoint. This has the same effect as dying and hitting Retry, or dying with instant Retry enabled, but skipping everything related to death (animation, music, prompt, etc.).</p>
+  <ul>
+    <li>Inputs: <code>N/A</code></li>
+    <li>Outputs: <code>N/A</code></li>
+    <li>Preconditions: <code>A/X/Y 8 bits</code></li>
+    <li>Postconditions: <code>A/X/Y 8 bits</code></li>
+  </ul>
+  <br/>
+
+  <h3 id="save_game">Save game</h3>
+  <p><code>JSL retry_api_save_game</code></p>
+  <p>Call this to save the game, which will also save the addresses defined in the <code>sram_tables.asm</code> file.</p>
+  <ul>
+    <li>Inputs: <code>N/A</code></li>
+    <li>Outputs: <code>N/A</code></li>
+    <li>Preconditions: <code>N/A</code></li>
+    <li>Postconditions: <code>A/X/Y 8 bits, DB/X/Y preserved</code></li>
+  </ul>
   <br/>
 
   <h3 id="reset_level_checkpoint">Reset level checkpoint</h3>
