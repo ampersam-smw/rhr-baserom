@@ -1,20 +1,36 @@
-; UberASM Tool list file.
-; See the readme for detailed information on its format.
+
+; UBERASM TOOL: LIST FILE
+; This is a list of all the code files you're using, and when to run them.
+; See the README for more information.
 
 ; sets verbose level, optional
 verbose: on
 
-; Level resources
+; LEVEL CODE
+; Code files in this part of list will be run in specific levels.
+
+; - If you want to use multiple code files in the same level, you can list
+;   the files after the level number separated by commas
+; - To run the same code in every level, you can use an asterisk (*)
+;   followed by a comma-separated list. Or you can apply it to Game Mode 14.
+
 level:
 
-; Overworld resources
-overworld:
 
-; Game mode resources
+; GAME MODE CODE
+; Code files in this part of list will be run during specific game modes.
+
+; Some commonly used game modes are:
+;   01: "Nintendo Presents" screen
+;   07: Title Screen
+;   08: Title Screen (File select)
+;   0E: Overworld
+;   14: Level
+;
+; A full list of game modes used by Super Mario World can be referenced here:
+; - https://www.smwcentral.net/?p=memorymap&a=detail&game=smw&region=ram&detail=29b0e3d11c61
+
 gamemode:
-
-    ; Gamemode ASM
-    ; Use the library method to add to these files.
     03 GM03.asm
     06 GM06.asm
     07 GM07.asm
@@ -31,8 +47,32 @@ gamemode:
     16 GM16.asm
     19 GM19.asm
 
-; Other code files and free RAM setting.  These don't usually need to be changed.
+
+; OVERWORLD CODE
+; Code files in this part of the list will be run on specific overworld maps.
+
+; Each map has a number:
+;  0: Main Map
+;  1: Yoshi's Island
+;  2: Vanilla Dome
+;  3: Forest of Illusion
+;  4: Valley of Bowser
+;  5: Special World
+;  6: Star Road
+
+overworld:
+
+
+; OTHER OPTIONS
+
+; Global code - this will be run all the time.
 global:         other/global_code.asm
+
+; Status bar code - this will be run when the status bar is drawn to the screen.
 statusbar:      other/status_code.asm
+
+; A file containing macros.
 macrolib:       other/macro_library.asm
-freeram:        $7FAC80                    ; 2 bytes of free RAM
+
+; Sprite-related RAM (see README). You probably don't need to change this.
+freeram:        $7FAC80   ; 38 (SNES) or 68 (SA-1) bytes of free RAM.
