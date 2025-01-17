@@ -2,6 +2,7 @@ v5.12
 - major upgrades to the retry system
 - fix issue with Mario dying in the screen scrolling pipes sometimes
 - reworked some of the UberASM Objects around the new retry features
+- include more informative UberASM Tool list
 
 v5.11
 - updated the tools to their latest versions (not Lunar Magic though)
