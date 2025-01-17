@@ -17,8 +17,8 @@ endmacro
     %incsrc(code/include,misc)
     %incsrc(code/include,rom)
     %incsrc("",ram)
-    %incsrc("",settings)
-    
+    %incsrc("",settings_global)
+
 ;=====================================
 ; Check incompatibilities.
 ;=====================================
@@ -27,12 +27,14 @@ endmacro
 ;=====================================
 ; Load the Retry tables.
 ;=====================================
-    %incsrc("",tables)
+if !use_legacy_tables
+    %incsrc(legacy,tables)
+else
+    %incsrc(code/include,tables)
+    %incsrc("",settings_local)
+endif
 if !sram_feature
     %incsrc("",sram_tables)
-endif
-if !sprite_status_bar
-    %incsrc("",sprite_status_bar_tables)
 endif
 
 ;=====================================
@@ -51,7 +53,12 @@ if !sprite_status_bar
 .timer:
     %incbin(gfx,timer)
 .item_box:
-    %incbin(gfx,item_box)
+    ; %incbin(gfx,item_box)
+    %incbin(gfx,item_box_small)
+if !draw_retry_indicator
+.indicator:
+    %incbin(gfx,indicator)
+endif
 endif
 
 ;=====================================
@@ -59,7 +66,6 @@ endif
 ;=====================================
     %incsrc(code,shared)
     %incsrc("",extra)
-    %incsrc("",level_end_frame)
     %incsrc(code,load_title)
     %incsrc(code,fade_to_level)
     %incsrc(code,level_init_1)
@@ -80,7 +86,6 @@ endif
 ; Load the hijacks.
 ;=====================================
     %incsrc(code/hijacks,hex_edits)
-    %incsrc(code/hijacks,gm14_end)
     %incsrc(code/hijacks,multiple_midways)
     %incsrc(code/hijacks,vanilla_midway)
     %incsrc(code/hijacks,custom_midway)

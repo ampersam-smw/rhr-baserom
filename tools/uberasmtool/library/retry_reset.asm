@@ -1,6 +1,7 @@
 ; Reset some retry settings on return to overworld
+; Used to re-sync settings with globals that may have been overridden by UberASM Objects
 incsrc "../retry_config/ram.asm"
-incsrc "../retry_config/settings.asm"
+incsrc "../retry_config/settings_global.asm"
 
 init:
     ; Initialize default prompt type

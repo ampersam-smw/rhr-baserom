@@ -15,5 +15,5 @@ nmi:
     rtl
 
 end:
-    jsl retry_indicator_end
+    jsl retry_in_level_end
     rtl

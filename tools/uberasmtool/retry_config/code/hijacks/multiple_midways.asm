@@ -18,6 +18,9 @@ org $05DAA3
 
 pullpc
 
+; Write a small identifier string in ROM.
+db "Retry patch v!version by KevinM"
+
 mmp_main:
     ; If not entering from the overworld, return.
     lda $141A|!addr : bne .return

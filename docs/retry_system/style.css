@@ -1,0 +1,37 @@
+body {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+}
+
+p, li, th, td {
+  line-height: 150%;
+}
+
+code {
+  font-size: 16px;
+  padding: 2px 4px;
+  background: rgba(0,0,0,.05);
+  border-radius: 4px;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.no-center {
+  text-align: left;
+}
+
+img {
+  margin: 20px auto;
+  max-width: 800px;
+  display: block;
+}

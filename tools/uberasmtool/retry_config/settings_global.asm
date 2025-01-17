@@ -23,7 +23,7 @@
 
 ; 0 = midways won't give Mario a mushroom.
 ; 1 = vanilla midway powerup behavior.
-; Note: you can also change this on the fly (see "docs/ram_map.txt").
+; Note: you can also change this on the fly (see "docs/ram.html").
     !midway_powerup = 1
 
 ; Counterbreak options reset the corresponding counters/items when the player dies and/or when going to the Overworld.
@@ -247,7 +247,7 @@
     !letter_palette = $08
     !cursor_palette = $08
 
-; If 1, score sprites (points, 1-Up) will be removed when dying.
+; If 1, score sprites (points, 1-Up) will be removed when dying, if Retry prompt is enabled in the level.
 ; This can be used to replace their graphics ($29, $38-$39, $44-$47, $54-$57)
 ; with the Retry prompt tiles instead of having to reserve sprite tiles for the prompt.
     !no_score_sprites_on_death = 1
@@ -260,7 +260,7 @@
 ; You can see the tile number in LM's 8x8 Tile Editor, by taking the value you see in the bottom left - $400 (e.g., "Tile 0x442" -> $42, "Tile 0x542" -> $142).
 ; Note: when the prompt box is enabled, !tile_curs and !tile_blk actually use 2 adjacent 8x8 tiles.
 ; For example, !tile_curs = $24 means both $24 and $25 will be overwritten.
-; Also, obviously these aren't used if you don't use the Retry prompt.
+; Also, obviously these aren't used if you don't use the Retry prompt or !no_prompt_draw = 1.
     !tile_curs = $46
     !tile_blk  = $56
     !tile_r    = $44
@@ -277,7 +277,7 @@
 ; The sprites use dynamic tiles, meaning you'll need to reserve some GFX space in your SP slots for them.
 ; Item box, coins and timer use 1 16x16 tile each, but they only need to be reserved when actually using them,
 ; and you can choose which tiles to use for each level (or to just disable any or all of them in specific levels)
-; using the tables in "sprite_status_bar_tables.asm".
+; calling the API routine "configure_sprite_status_bar" in your level/gamemode UberASM (see "api.html").
     !sprite_status_bar = 1
 
 ; If 1, it disables the original game's status bar (including the IRQ) which prevents layer 3 from messing up.
@@ -290,7 +290,7 @@
 ; General properties for sprite status bar elements.
 ; These are only relevant if !sprite_status_bar = 1.
     !item_box_x_pos     = $70
-    !item_box_y_pos     = $07
+    !item_box_y_pos     = $0F
     !timer_x_pos        = $D0
     !timer_y_pos        = $0F
     !coin_counter_x_pos = $D0
@@ -307,6 +307,16 @@
 ; If 0, they won't be displayed (like in vanilla).
 ; This is only relevant if !sprite_status_bar = 1.
     !draw_all_dc_collected = 0
+
+; If !draw_retry_indicator = 1, an 8x8 indicator will be drawn on the sprite status bar
+; in levels where Retry prompt or instant Retry is enabled. This could be useful for collabs.
+; The other settings control how and where it is drawn. The tile you choose will be
+; overwritten at runtime by the indicator tile when needed.
+    !draw_retry_indicator    = 0
+    !retry_indicator_tile    = $69
+    !retry_indicator_palette = $09
+    !retry_indicator_x_pos   = $10
+    !retry_indicator_y_pos   = $0F
 
 ;======================== Death Counter =================================;
 
@@ -332,3 +342,10 @@
 ; Tile number of the digit "0" on the Overworld.
 ; (it's assumed that the digits are stored in order from 0 to 9 in the GFX file).
     !ow_digit_0 = $22
+
+;======================== Misc settings =================================;
+
+; If 1, the level-specific Retry settings will be loaded from the "legacy/tables.asm"
+; file instead of the "settings_local.asm" file. Use this if you prefer the old table-based
+; approach rather than the new macro-based approach.
+!use_legacy_tables = 0

@@ -2,7 +2,7 @@
 ; You usually shouldn't edit this file.
 
 ; Retry version number to write in ROM.
-!version = "0.6.2"
+!version = "0.7.2"
 
 ; What button exits the level while the game is paused (by default, select).
 !exit_level_buttons_addr = $16
@@ -53,6 +53,20 @@
 
 ; Define the custom sprites load table address.
 %define_sprite_table(sprite_load_table, $7FAF00, $418A00)
+
+; SRAM size in the ROM header. Actual size is (2^!sram_size) KB.
+; Not used on SA-1 roms.
+!sram_size = $03
+
+; How big (in bytes) each save file is in SRAM/BW-RAM.
+!file_size = $0955
+
+; SRAM/BW-RAM address to save to.
+if !sa1
+    !sram_addr = $41A000
+else
+    !sram_addr = $700400
+endif
 
 ; OW translevel number table.
 if !sa1

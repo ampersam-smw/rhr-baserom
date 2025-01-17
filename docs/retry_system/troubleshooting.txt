@@ -58,11 +58,6 @@ A: To fix, add this code at the very start of the Single Screen's main code:
 
 --------------------------------------------------------------------------------
 
-Q: When I get the midway point in a level, sometimes Mario respawns in the main entrance rather than the midway entrance!
-A: Midway entrances only work properly if they use the "secondary method" in Lunar Magic. So if a midway doesn't seem to work, drag it around in LM while in sprite editing mode and put it back where it was (which enables the secondary method).
-
---------------------------------------------------------------------------------
-
 Q: I set a custom midway entrance value to a secondary exit, but it doesn't work!
 A: Secondary entrances that are already present in the original game won't work properly. To make it work, delete it and remake it in LM.
 
@@ -70,12 +65,6 @@ A: Secondary entrances that are already present in the original game won't work 
 
 Q: When I enter a level from the overworld, it brings me to the bonus game!
 A: After inserting this, make sure to start from a new save file.
-
---------------------------------------------------------------------------------
-
-Q: I patched the "Individual Dragon Coins Save" patch, but it doesn't seem to work correctly with Retry (for example, Dragon Coins not saving when getting a midway when using !Midpoint = 1 in that patch).
-A: First, check that you're using the latest version of that patch (the one that lists lx5 among the authors). After inserting that patch for the first time, you'll need to rerun UberASM Tool so that Retry can be aware that it's been inserted. After doing this, you can repatch both freely in any order, and they should work in any case.
-Additionally, if you just patched the "Remove Status Bar" patch, rerun UberASM Tool as well.
 
 --------------------------------------------------------------------------------
 

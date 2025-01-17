@@ -12,16 +12,13 @@ macro store_digit_addr()
 endmacro
 
 nmi:
-    ; Get the index for the current sublevel.
-    rep #$30
-    lda $010B|!addr : asl : tax
+    rep #$20
 
     ; Check if we need to upload the timer digits.
-    lda.l tables_timer,x : bne +
+    lda !ram_status_bar_timer_tile : bne +
     jmp .no_timer
 +
     ; Compute the VRAM address for later.
-    phx
     %calc_vram() : pha
 
     ; Only upload if the timer changed, unless Mario died
@@ -31,11 +28,9 @@ nmi:
     lda $0F30|!addr : cmp.l !rom_timer_ticks : beq +
     rep #$20
     pla
-    plx
     jmp .no_timer
-+   
++
     ; Setup the constant DMA parameters.
-    sep #$10
     rep #$20
     ldy #$80 : sty $2115
     lda #$1801 : sta.w prompt_dma($4300)
@@ -51,7 +46,7 @@ nmi:
 
     ; In this case we need to upload the second digit even if 0.
     lda $0F32|!addr : and #$00FF : bra ++
-+   
++
     ; Upload the second digit, unless it's 0.
     lda $0F32|!addr : and #$00FF : beq +
 ++  %store_digit_addr()
@@ -66,12 +61,9 @@ nmi:
     lda.w #gfx_size(1) : sta.w prompt_dma($4305)
     sty $420B
 
-    ; Restore X and processor state.
-    rep #$10 : plx
-
 .no_timer:
     ; Check if we need to upload the coin counter digits.
-    lda.l tables_coins,x : beq .no_coins
+    lda !ram_status_bar_coins_tile : beq .no_coins
 
     ; Compute the VRAM address for later.
     %calc_vram() : pha
@@ -81,7 +73,7 @@ nmi:
     lda $0DBF|!addr : cmp !ram_coin_backup : bne +
     rep #$20 : pla
     bra .no_coins
-+   
++
     ; Update the coin counter backup.
     sta !ram_coin_backup
 
@@ -91,7 +83,6 @@ nmi:
 
     ; Setup the constant DMA parameters (also waste time for division).
     rep #$20
-    sep #$10
     ldy #$80 : sty $2115
     lda #$1801 : sta.w prompt_dma($4300)
     ldy.b #retry_gfx>>16 : sty.w prompt_dma($4304)
@@ -103,7 +94,7 @@ nmi:
     lda $01,s : adc #$0100 : sta $2116
     lda.w #gfx_size(1) : sta.w prompt_dma($4305)
     sty $420B
-+   
++
     ; Upload the second digit.
     lda $4216 : %store_digit_addr()
     pla : adc #$0110 : sta $2116
@@ -111,7 +102,7 @@ nmi:
     sty $420B
 
 .no_coins:
-    sep #$30
+    sep #$20
     rts
 
 init:
@@ -132,100 +123,121 @@ init:
     ldy.b #retry_gfx>>16 : sty.w prompt_dma($4304)
     ldy #$04
 
-    ; Get the index for the current sublevel.
-    rep #$10
-    lda $010B|!addr : asl : tax
-
     ; Check if we need to upload the item box tile.
-    lda.l tables_item_box,x : beq ..no_item_box
+    lda !ram_status_bar_item_box_tile : beq ..no_item_box
 
-    ; Upload the first row.
-    phx : sep #$10
-    %calc_vram() : sta $2116 : pha
+    ; Upload the item box tile.
+    %calc_vram() : sta $2116
     lda.w #retry_gfx_item_box : sta.w prompt_dma($4302)
-    lda.w #gfx_size(2) : sta.w prompt_dma($4305)
+    lda.w #gfx_size(1) : sta.w prompt_dma($4305)
     sty $420B
 
-    ; Upload the second row.
-    pla : adc #$0100 : sta $2116
-    lda.w #retry_gfx_item_box+$40 : sta.w prompt_dma($4302)
-    lda.w #gfx_size(2) : sta.w prompt_dma($4305)
-    sty $420B
-
-    ; Restore X and processor state.
-    rep #$10 : plx
 ..no_item_box:
-
     ; Check if we need to upload the clock tile.
-    lda.l tables_timer,x : beq ..no_timer
+    lda !ram_status_bar_timer_tile : beq ..no_timer
 
     ; Upload the clock tile.
-    phx : sep #$10
     %calc_vram() : sta $2116
     lda.w #retry_gfx_timer : sta.w prompt_dma($4302)
     lda.w #gfx_size(1) : sta.w prompt_dma($4305)
     sty $420B
 
-    ; Restore X and processor state.
-    rep #$10 : plx
 ..no_timer:
-
     ; Check if we need to upload the coin tile.
-    lda.l tables_coins,x : beq ..no_coins
+    lda !ram_status_bar_coins_tile : beq ..no_coins
 
     ; Upload the coin tiles.
-    sep #$10
     %calc_vram() : sta $2116
     lda.w #retry_gfx_coin : sta.w prompt_dma($4302)
     lda.w #gfx_size(2) : sta.w prompt_dma($4305)
     sty $420B
 
 ..no_coins:
-    sep #$30
+    sep #$20
+
+if !draw_retry_indicator
+    ; Check if we need to upload the indicator tile.
+    jsr shared_get_prompt_type
+    cmp #$04 : bcs ..no_indicator
+
+    ; Upload the indicator tile.
+    rep #$20
+    lda.w #vram_addr(!retry_indicator_tile) : sta $2116
+    lda.w #retry_gfx_indicator : sta.w prompt_dma($4302)
+    lda.w #gfx_size(1) : sta.w prompt_dma($4305)
+    sty $420B
+    sep #$20
+..no_indicator:
+endif
+
     rts
 
 main:
     ; Don't draw if the game is paused.
     lda $13D4|!addr : bne .return
 
-    ; Get the index for the current sublevel.
-    rep #$30
-    lda $010B|!addr : asl : tay
-
     phb : phk : plb
+    rep #$30
 if not(!maxtile)
     ldx #$0000
 endif
+    stz $02
 
     ; Draw the item box if applicable.
-    lda.w tables_item_box,y : beq .no_item_box
-    phy : php
+    lda !ram_status_bar_item_box_tile : beq .no_item_box
+    php
     jsr convert_tile_props
     jsr draw_item_box
-    plp : ply
+    plp
+    inc $02
 
 .no_item_box:
-    
     ; Draw the timer if applicable.
-    lda.w tables_timer,y : beq .no_timer
-    phy : php
+    lda !ram_status_bar_timer_tile : beq .no_timer
+    php
     jsr convert_tile_props
     jsr draw_timer
-    plp : ply
+    plp
+    inc $02
 
 .no_timer:
-
     ; Draw the coins if applicable.
-    lda.w tables_coins,y : beq .no_coins
-    phy : php
+    lda !ram_status_bar_coins_tile : beq .no_coins
+    php
     jsr convert_tile_props
     jsr draw_coins
     jsr draw_yoshi_coins
-    plp : ply
+    plp
+    inc $02
 
 .no_coins:
+if !draw_retry_indicator
+    ; Draw the indicator if applicable
+    sep #$20
+    jsr shared_get_prompt_type
+    cmp #$04 : bcs .no_indicator
+    jsr draw_indicator
+    inc $02
+
+.no_indicator:
+endif
+
     sep #$30
     plb
+
+    ; Check if a tile was drawn
+    lda $02 : beq .return
+
+    ; If yes, always update $0400 during gamemode 14
+    lda $0100|!addr : cmp #$14 : beq .0400_update
+
+    ; Skip updating the $0400 table during mode 7 boss
+    ; initialization to avoid a game crash (???)
+    lda $0D9B|!addr : bmi .return
+
+.0400_update:
+    ; Make sure $0400 is up to date
+    jsr shared_update_0400
 
 .return:
     rts
@@ -279,7 +291,7 @@ if !maxtile
     sep #$20
     dex #4 : stx !maxtile_buffer_max+0
     ldx !maxtile_buffer_max+2
-    lda #$02 : sta $400000,x
+    lda #$00 : sta $400000,x
     dex : stx !maxtile_buffer_max+2
 else
     jsr get_free_slot
@@ -289,7 +301,7 @@ else
     phx
     txa : lsr #2 : tax
     sep #$20
-    lda #$02 : sta $0420|!addr,x
+    stz $0420|!addr,x
     plx
     inx #4
 endif
@@ -299,9 +311,9 @@ endif
 
 .pos:
     db $00+!item_box_x_pos,$00+!item_box_y_pos
-    db $10+!item_box_x_pos,$00+!item_box_y_pos
-    db $00+!item_box_x_pos,$10+!item_box_y_pos
-    db $10+!item_box_x_pos,$10+!item_box_y_pos
+    db $18+!item_box_x_pos,$00+!item_box_y_pos
+    db $00+!item_box_x_pos,$08+!item_box_y_pos
+    db $18+!item_box_x_pos,$08+!item_box_y_pos
 
 .props:
     dw $0000,$4000,$8000,$C000
@@ -310,7 +322,7 @@ draw_timer:
     ; Draw the clock tile.
     ldy #$0000
     jsr .draw
-    
+
     ; Draw the first digit, unless it's 0.
     lda $0F31|!addr : bne +
     lda #$80 : ora !ram_timer+0 : sta !ram_timer+0
@@ -426,8 +438,10 @@ endif
     dw $0000,$0010,$0011
 
 draw_yoshi_coins:
-    ; Check if we need to draw the Yoshi Coins.
+    phx
     sep #$10
+
+    ; Check if we need to draw the Yoshi Coins
     lda $13BF|!addr : and #$07 : tay
     lda.w .mask,y : sta $02
     lda $13BF|!addr : lsr #3 : tay
@@ -439,14 +453,18 @@ if !draw_all_dc_collected
     bne .shared
 endif
 
+.no_draw:
+    rep #$10
+    plx
     rts
 
 .not_all:
     ; If not all DCs collected, get their amount from $1422.
-    lda $1422|!addr : beq .return
+    lda $1422|!addr : beq .no_draw
 
 .shared:
     rep #$10
+    plx
 
     ; $0F = amount of tiles to draw
     dec : sta $0F
@@ -518,6 +536,42 @@ get_total_dc_amount:
     ; If detection failed, load the default amount.
     lda.b #!default_dc_amount
     rts
+endif
+
+if !draw_retry_indicator
+
+assert !retry_indicator_palette >= $08 && !retry_indicator_palette <= $0F, "Error: \!retry_indicator_palette should be between $08 and $0F."
+
+!retry_indicator_xy #= (!retry_indicator_x_pos)|(!retry_indicator_y_pos<<8)
+!retry_indicator_tp #= (!retry_indicator_tile&$1FF)|$3000|((!retry_indicator_palette-8)<<9)
+
+draw_indicator:
+if !maxtile
+    ldx !maxtile_buffer_max+0 : cpx !maxtile_buffer_max+8 : beq .return
+    rep #$20
+    lda.w #!retry_indicator_xy : sta $400000,x
+    lda.w #!retry_indicator_tp : sta $400002,x
+    sep #$20
+    dex #4 : stx !maxtile_buffer_max+0
+    ldx !maxtile_buffer_max+2
+    lda #$00 : sta $400000,x
+    dex : stx !maxtile_buffer_max+2
+else
+    jsr get_free_slot
+    rep #$20
+    lda.w #!retry_indicator_xy : sta $0200|!addr,x
+    lda.w #!retry_indicator_tp : sta $0202|!addr,x
+    phx
+    txa : lsr #2 : tax
+    sep #$20
+    stz $0420|!addr,x
+    plx
+    inx #4
+endif
+
+.return:
+    rts
+
 endif
 
 endif

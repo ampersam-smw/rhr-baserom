@@ -136,17 +136,3 @@ door_animation:
 
     
     rts
-
-;=====================================
-; This routine will be called at the end of the game loop during gamemodes 7 and 14 (title screen and levels),
-; just before Retry draws the prompt and AddmusicK's code runs.
-; If you have other patches that hijack $00A2EA, you could try to put their freespace code in this routine to solve the conflict.
-; NOTE: this runs at the end of the level frame in each level. If you want to run level-specific code, see "level_end_frame.asm".
-; NOTE: on SA-1 roms, this runs on the SNES cpu.
-;=====================================
-gm14_end:
-    ; Feel free to put your code here.
-
-
-
-    rts

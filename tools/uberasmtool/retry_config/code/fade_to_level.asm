@@ -1,6 +1,16 @@
 ; Gamemode 0F
 
 init:
+if !sprite_status_bar
+    ; Reset sprite status bar configuration.
+    rep #$20
+    lda #$0000
+    sta !ram_status_bar_item_box_tile
+    sta !ram_status_bar_timer_tile
+    sta !ram_status_bar_coins_tile
+    sep #$20
+endif
+
     ; If respawning or doing a level transition, skip.
     lda $141A|!addr : bne .transition
 

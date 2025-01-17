@@ -1,7 +1,6 @@
 ; include common freeram
 incsrc "callisto.asm"
 %import_library("freeram.asm")
-; include retry definitions
 incsrc "../retry_config/ram.asm"
 
 ; UberASM Objects system
@@ -26,12 +25,14 @@ routines:
     %ObjectRoutine($A9, toggle_spinjump_fireballs)
     %ObjectRoutine($AA, toggle_springboard_fixes)
     %ObjectRoutine($AD, toggle_rope_glitch)
-    %ObjectRoutine($B0, retry_instant)
-    %ObjectRoutine($B1, retry_prompt)
-    %ObjectRoutine($B2, retry_bottom_left)
-    %ObjectRoutine($B3, retry_no_midway_powerup)
-    %ObjectRoutine($B4, retry_vanilla)
-    %ObjectRoutine($B6, toggle_retry_indicator)
+    %ObjectRoutine($B0, retry_type_instant)
+    %ObjectRoutine($B1, retry_type_prompt)
+    %ObjectRoutine($B2, retry_type_vanilla)
+    %ObjectRoutine($B3, retry_config_bottom_left_prompt)
+    %ObjectRoutine($B4, retry_config_no_powerup_from_midway)
+    %ObjectRoutine($BA, retry_display_timer)
+    %ObjectRoutine($BB, retry_display_coins)
+    %ObjectRoutine($BC, retry_display_item_box)
     %ObjectRoutine($C0, start_with_mushroom)
     %ObjectRoutine($C1, start_with_cape)
     %ObjectRoutine($C2, start_with_fire_flower)
@@ -276,114 +277,126 @@ toggle_rope_glitch:
 ; Extended Object AE
 ; Extended Object AF
 
-; Extended Object B0 - Use instant retry
-retry_instant:
+
+
+;;
+;; Extended Objects B0 - BF
+;; Retry Config Objects
+;;
+
+; Use instant retry
+retry_type_instant:
     lda #$03 : sta !retry_ram_prompt_override
     rts
 
-; Extended Object B1 - Use prompt retry
-retry_prompt:
+; Use prompt retry
+retry_type_prompt:
     lda #$02 : sta !retry_ram_prompt_override
     rts
 
-; Extended Object B2 - Display retry prompt in bottom left
-retry_bottom_left:
-    lda #$08 : sta !retry_ram_prompt_x_pos
-    lda #$d0 : sta !retry_ram_prompt_y_pos
-    rts
-
-; Extended Object B3 - No powerup from midways
-retry_no_midway_powerup:
-    lda #$00 : sta !retry_ram_midway_powerup
-    rts
-
-; Extended Object B4 - Vanilla death sequence
-retry_vanilla:
+; Use Vanilla death sequence (useful to override a global setting)
+retry_type_vanilla:
     lda #$04 : sta !retry_ram_prompt_override
     rts
 
-; Extended Object B5 (skipped because it uses a door tile)
-
-; Extended Object B6 - Toggle retry indicator
-toggle_retry_indicator:
-    lda #$01 : sta !toggle_retry_indicator_freeram
+; Display retry prompt in bottom left
+retry_config_bottom_left_prompt:
+    lda #$08 : sta !retry_ram_prompt_x_pos
+    lda #$D0 : sta !retry_ram_prompt_y_pos
     rts
 
-; Extended Object B7
-; Extended Object B8
-; Extended Object B9
-; Extended Object BA
-; Extended Object BB
-; Extended Object BC
-; Extended Object BD
-; Extended Object BE
-; Extended Object BF
+; No powerup from midways
+retry_config_no_powerup_from_midway:
+    lda #$00 : sta !retry_ram_midway_powerup
+    rts
 
-; Extended Object C0 - Start Mario in with a Mushroom
+; Draw sprite item box
+retry_display_item_box:
+    rep #$30
+    lda #$301D  ; Item box: palette B, tile 0x80
+    sta !retry_ram_status_bar_item_box_tile
+    sep #$30
+    rts
+
+retry_display_timer:
+    rep #$30
+    lda #$0020 ; Timer: palette 8, tile 0x20
+    sta !retry_ram_status_bar_timer_tile
+    sep #$30
+    rts
+
+retry_display_coins:
+    rep #$30
+    lda #$0022 ; Coin counter: palette 8, tile 0x22
+    sta !retry_ram_status_bar_coins_tile
+    sep #$30
+    rts
+
+
+;;
+;; Extended Objects C0-CF
+;; Initial Player or level states
+;;
+
+; Start Mario in with a Mushroom
 start_with_mushroom:
     lda #$01 : sta $19 ; set player power-up status to big
     rts
 
-; Extended Object C1 - Start Mario in with a Cape
+; Start Mario in with a Cape
 start_with_cape:
     lda #$02 : sta $19 ; set player power-up status to cape
     rts
 
-; Extended Object C2 - Start Mario in with Flower
+; Start Mario in with Flower
 start_with_fire_flower:
     lda #$03 : sta $19 ; set player power-up status to fire
     rts
 
-; Extended Object C3 - Start with Star Power
+; Start with Star Power
 start_with_star_power:
     lda #$FF : sta $1490|!addr ; start the player with default star power timer
     rts
 
-; Extended Object C4 - Start Mario on Green Yoshi
+; Start Mario on Green Yoshi
 start_on_green_yoshi:
     lda #$0A            ;\ #$04=yellow; #$06=blue; #$08=red; #$0A=green
     sta $13C7|!addr     ;/ store yoshi color
     jsl $00FC7A|!bank   ;> run routine to initialize yoshi
     rts
 
-; Extended Object C5 - Start Mario on Yellow Yoshi
+; Start Mario on Yellow Yoshi
 start_on_yellow_yoshi:
     lda #$04            ;\ #$04=yellow; #$06=blue; #$08=red; #$0A=green
     sta $13C7|!addr     ;/ store yoshi color
     jsl $00FC7A|!bank   ;> run routine to initialize yoshi
     rts
 
-; Extended Object C6 - Start Mario on Blue Yoshi
+; Start Mario on Blue Yoshi
 start_on_blue_yoshi:
     lda #$06            ;\ #$04=yellow; #$06=blue; #$08=red; #$0A=green
     sta $13C7|!addr     ;/ store yoshi color
     jsl $00FC7A|!bank   ;> run routine to initialize yoshi
     rts
 
-; Extended Object C7 - Start Mario on Red Yoshi
+; Start Mario on Red Yoshi
 start_on_red_yoshi:
     lda #$08            ;\ #$04=yellow; #$06=blue; #$08=red; #$0A=green
     sta $13C7|!addr     ;/ store yoshi color
     jsl $00FC7A|!bank   ;> run routine to initialize yoshi
     rts
 
-; Extended Object C8 - Start in Spinning State
+; Start in Spinning State
 start_in_spin_jump:
     lda #$01 : sta $140D|!addr ; set spin jump flag
     rts
 
-; Extended Object C9 - Start with Switch OFF
+; Start with Switch OFF
 start_with_switch_off:
     lda #$01 : sta $14AF|!addr ; set switch state to OFF
     rts
 
-; Extended Object CA - Start with Switch ON
+; Start with Switch ON
 start_with_switch_on:
     stz $14AF|!addr ; set switch state to ON
     rts
-
-; Extended Object CB
-; Extended Object CC
-; Extended Object CD
-; Extended Object CE
-; Extended Object CF

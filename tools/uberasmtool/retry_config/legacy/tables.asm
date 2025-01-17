@@ -1,4 +1,7 @@
 ; Retry table-based settings. These are used to have different settings for different levels.
+; Note that these are unused by default, as you need to use the new macro-based approach to configure these settings
+; from the "settings_local.asm" file. If you prefer the old table-based method, set !use_legacy_tables = 1 in
+; "settings_global.asm" and this file will be used instead of the new one.
 
 ;=================================================;
 ; Multiple Midway and Local Retry Prompt Settings ;

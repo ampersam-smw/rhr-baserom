@@ -6,9 +6,7 @@
 
 -- Baserom --
 AmperSam - Compilation and documentation
-
--- Help & Testing--
-Fen, Fernap, Kevin, LouisDoucet, TheJavaBrew, underway
+Fen, Fernap, Kevin, LouisDoucet, TheJavaBrew, underway - Help & Feedback
 
 -- Consistency Patches --
 Capespin Direction Consistency - Katun24

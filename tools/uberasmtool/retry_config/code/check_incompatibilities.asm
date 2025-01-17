@@ -24,3 +24,6 @@ if !sram_feature && !sa1 && !bwram_plus
     print "Warning: BW-RAM Plus was detected in your ROM. Retry's save feature won't be inserted."
     !sram_feature = 0
 endif
+
+; UberASM Tool 2.0 is now required
+%require_uber_ver(2,0)

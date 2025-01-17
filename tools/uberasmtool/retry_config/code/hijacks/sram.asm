@@ -1,20 +1,5 @@
 ; This file handles expanding the normal SRAM and saving custom addresses to it.
 ; It works on both lorom (SRAM) and SA-1 (BW-RAM).
-; You can change the parameters below if you want. The default should be fine in most cases.
-
-; SRAM size in the ROM header. Actual size is (2^!sram_size) KB.
-; Not used on SA-1 roms.
-!sram_size = $03
-
-; How big (in bytes) each save file is in SRAM/BW-RAM.
-!file_size = $0955
-
-; SRAM/BW-RAM address to save to.
-if !sa1
-    !sram_addr = $41A000
-else
-    !sram_addr = $700400
-endif
 
 ; Bank byte of the SRAM/BW-RAM address.
 !sram_bank          = (!sram_addr>>16)
@@ -70,7 +55,7 @@ save_game:
     jsr extra_save_file
     plb : plp
 
-    jsr get_sram_addr
+    jsr get_sram_addr : sta $02
     lda.w #!save_table_size : sta $06
     ldx #$0000
 .loop:
@@ -159,7 +144,7 @@ load_game_over:
     rtl
 
 load_file:
-    jsr get_sram_addr
+    jsr get_sram_addr : sta $02
     ldx #$0000
 .loop:
     lda.w tables_save,x : tay
@@ -255,7 +240,7 @@ endif
 get_sram_addr:
     rep #$30
     lda $010A|!addr : and #$00FF : asl : tax
-    lda.w .sram_addr,x : sta $02
+    lda.w .sram_addr,x
     rts    
 
 .sram_addr:

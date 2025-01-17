@@ -6,7 +6,7 @@ init:
 
     ; Initialize the retry ram to 0.
     rep #$30
-    ldx #$0024
+    ldx.w #!ram_checkpoint-!retry_freeram-2
 -   stz.w !retry_freeram,x
     dex #2 : bpl -
 

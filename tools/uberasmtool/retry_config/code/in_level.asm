@@ -588,3 +588,63 @@ reset_music:
 
 .return:
     rts
+
+;================================================================================
+; This routine handles some processes that need to run at the very end of the main game loop:
+; - Death routine: if the player died on this frame, it needs to prevent the
+;   death song from playing when applicable, before the music engine is aware
+;   of it. It also handles incrementing the death counter-
+; - Prompt OAM: if the prompt is being show, it needs to draw it on the
+;   screen. You can't draw sprite tiles in gamemode 14 codes, as $7F8000
+;   is called shortly after their main code, so we do it here. Being at
+;   the end of the loop also allows it to not overwrite sprite tiles used
+;   by other elements in the level.
+; - Set checkpoint: if a checkpoint has been gotten on this frame (signaled
+;   by the !ram_set_checkpoint handle), it needs to actually set it in Retry's
+;   RAM. This could be done in gm14 as well, at the start of the next frame,
+;   but better to do it as early as possible just to be safe :P
+;================================================================================
+end:
+    ; Set DBR.
+    phb : phk : plb
+
+if !sprite_status_bar
+    ; Draw the sprite status bar.
+    jsr sprite_status_bar_main
+endif
+
+    ; If Mario is dying, call the death routine.
+    lda $71 : cmp #$09 : bne .no_death
+    jsr death_routine
+
+.no_death:
+    ; Check if we have to set the checkpoint.
+    rep #$20
+    lda !ram_set_checkpoint : cmp #$FFFF
+    sep #$20
+    beq .no_checkpoint
+    jsr set_checkpoint
+
+.no_checkpoint:
+if not(!no_prompt_draw)
+    ; Check if it's time to draw the tiles.
+    lda !ram_prompt_phase : cmp #$02 : beq .draw_prompt
+                                       bcc .return
+
+    ; In some cases it's needed to remove the prompt tiles from OAM after the option is chosen.
+    jsr erase_tiles
+    bra .return
+
+.draw_prompt:
+    jsr prompt_oam
+endif
+
+.return:
+    ; Restore DBR.
+    plb
+    rtl
+
+; Import all auxiliary routines called by this file.
+incsrc "gm14_end/death_routine.asm"
+incsrc "gm14_end/prompt_oam.asm"
+incsrc "gm14_end/set_checkpoint.asm"
