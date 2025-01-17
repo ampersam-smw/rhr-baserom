@@ -5,6 +5,23 @@
 ; This runs just before AMK, so we can kill the death song before it starts.
 ;=====================================
 death_routine:
+if not(!infinite_lives)
+    ; Check if all lives were lost.
+    lda $0DBE|!addr : bpl .no_game_over
+
+    ; Check if the death sequence has finished.
+    lda $1496|!addr : bne .game_over_return
+
+.game_over:
+    ; If yes, go to game over
+    %jsl_to_rts_db($00D0DD,$0084CF)
+
+..return:
+    rts
+
+.no_game_over:
+endif
+
     ; If the reload level flag is set...
     lda !ram_is_dying : bit #$40 : beq .no_reload
 
@@ -74,17 +91,20 @@ if !custom_powerups == 1
     lda !item_box_disable : ora #$02 : sta !item_box_disable
 endif
 
+if not(!infinite_lives)
+    ; Check if we need to decrement lives.
+    jsr shared_get_bitwise_mask
+    and.l tables_lose_lives,x : beq .no_lose_lives
+
+    ; If yes, decrement them and don't reset music if about to game over.
+    dec $0DBE|!addr : bmi .return
+
+.no_lose_lives:
+endif
+
 .handle_song:
     ; If the music is sped up, play the death song to make it normal again.
     lda !ram_hurry_up : bne .return
-
-    ; If not infinite lives and they're over, skip retry as we're about to game over.
-if not(!infinite_lives)
-    jsr shared_get_bitwise_mask
-    and.l tables_lose_lives,x : beq +
-    lda $0DBE|!addr : beq .return : bmi .return
-+
-endif
 
     ; If "Exit" was selected, don't disable the death music.
     lda !ram_prompt_phase : cmp #$05 : bcs .return

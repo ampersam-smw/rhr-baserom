@@ -18,7 +18,7 @@ endmacro
     %incsrc(code/include,rom)
     %incsrc("",ram)
     %incsrc("",settings_global)
-
+    
 ;=====================================
 ; Check incompatibilities.
 ;=====================================
@@ -53,8 +53,11 @@ if !sprite_status_bar
 .timer:
     %incbin(gfx,timer)
 .item_box:
-    ; %incbin(gfx,item_box)
-    %incbin(gfx,item_box_small)
+if !8x8_item_box_tile
+    %incbin(gfx,item_box_8x8)
+else
+    %incbin(gfx,item_box_16x16)
+endif
 if !draw_retry_indicator
 .indicator:
     %incbin(gfx,indicator)
@@ -92,7 +95,6 @@ endif
     %incsrc(code/hijacks,sram)
     %incsrc(code/hijacks,hurry_up)
     %incsrc(code/hijacks,death_counter)
-    %incsrc(code/hijacks,lose_lives)
     %incsrc(code/hijacks,initial_facing_fix)
     %incsrc(code/hijacks,item_box_fix)
     %incsrc(code/hijacks,remove_status_bar)

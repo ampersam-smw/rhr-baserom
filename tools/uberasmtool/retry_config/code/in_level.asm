@@ -98,7 +98,7 @@ endif
 if not(!infinite_lives)
     jsr shared_get_bitwise_mask
     and.l tables_lose_lives,x : beq +
-    lda $0DBE|!addr : bne +
+    lda $0DBE|!addr : bpl +
     rtl
 +
 endif
@@ -272,13 +272,6 @@ endif
     stz $187A|!addr
     lda #$03 : sta $1DFA|!addr
 +
-    ; If applicable, decrement lives (if 0, we can't get here so we're safe).
-if not(!infinite_lives)
-    jsr shared_get_bitwise_mask
-    and.l tables_lose_lives,x : beq +
-    dec $0DBE|!addr
-+
-endif
 
     ; Mark as sublevel so we skip the "Mario Start!" message.
     ; (don't do "inc $141A" so we avoid the 256 entrance glitch)

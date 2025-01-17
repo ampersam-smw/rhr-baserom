@@ -290,7 +290,7 @@
 ; General properties for sprite status bar elements.
 ; These are only relevant if !sprite_status_bar = 1.
     !item_box_x_pos     = $70
-    !item_box_y_pos     = $0F
+    !item_box_y_pos     = $07
     !timer_x_pos        = $D0
     !timer_y_pos        = $0F
     !coin_counter_x_pos = $D0
@@ -302,6 +302,10 @@
 ; Otherwise, it will only be drawn when having an item in reserve.
 ; This is only relevant if !sprite_status_bar = 1.
     !always_draw_box = 0
+
+; If 1, the item box will use an 8x8 tile instead of a 16x16 tile.
+; This is only relevant if !sprite_status_bar = 1.
+    !8x8_item_box_tile = 1
 
 ; If 1, when collecting all DCs in a level they'll be displayed in the status bar.
 ; If 0, they won't be displayed (like in vanilla).

@@ -19,4 +19,9 @@ endif
 org $05B31B
     rts : db $69
 
+; Prevent vanilla decrementing lives.
+org $00D0D8
+    nop #3
+    bra $09
+
 pullpc

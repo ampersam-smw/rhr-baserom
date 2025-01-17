@@ -29,7 +29,7 @@ nmi:
     rep #$20
     pla
     jmp .no_timer
-+
++   
     ; Setup the constant DMA parameters.
     rep #$20
     ldy #$80 : sty $2115
@@ -46,7 +46,7 @@ nmi:
 
     ; In this case we need to upload the second digit even if 0.
     lda $0F32|!addr : and #$00FF : bra ++
-+
++   
     ; Upload the second digit, unless it's 0.
     lda $0F32|!addr : and #$00FF : beq +
 ++  %store_digit_addr()
@@ -73,7 +73,7 @@ nmi:
     lda $0DBF|!addr : cmp !ram_coin_backup : bne +
     rep #$20 : pla
     bra .no_coins
-+
++   
     ; Update the coin counter backup.
     sta !ram_coin_backup
 
@@ -94,7 +94,7 @@ nmi:
     lda $01,s : adc #$0100 : sta $2116
     lda.w #gfx_size(1) : sta.w prompt_dma($4305)
     sty $420B
-+
++   
     ; Upload the second digit.
     lda $4216 : %store_digit_addr()
     pla : adc #$0110 : sta $2116
@@ -126,11 +126,25 @@ init:
     ; Check if we need to upload the item box tile.
     lda !ram_status_bar_item_box_tile : beq ..no_item_box
 
+if !8x8_item_box_tile
     ; Upload the item box tile.
     %calc_vram() : sta $2116
     lda.w #retry_gfx_item_box : sta.w prompt_dma($4302)
     lda.w #gfx_size(1) : sta.w prompt_dma($4305)
     sty $420B
+else
+    ; Upload the first row.
+    %calc_vram() : sta $2116 : pha
+    lda.w #retry_gfx_item_box : sta.w prompt_dma($4302)
+    lda.w #gfx_size(2) : sta.w prompt_dma($4305)
+    sty $420B
+
+    ; Upload the second row.
+    pla : adc #$0100 : sta $2116
+    lda.w #retry_gfx_item_box+$40 : sta.w prompt_dma($4302)
+    lda.w #gfx_size(2) : sta.w prompt_dma($4305)
+    sty $420B
+endif
 
 ..no_item_box:
     ; Check if we need to upload the clock tile.
@@ -221,7 +235,7 @@ if !draw_retry_indicator
 
 .no_indicator:
 endif
-
+    
     sep #$30
     plb
 
@@ -291,7 +305,11 @@ if !maxtile
     sep #$20
     dex #4 : stx !maxtile_buffer_max+0
     ldx !maxtile_buffer_max+2
+if !8x8_item_box_tile
     lda #$00 : sta $400000,x
+else
+    lda #$02 : sta $400000,x
+endif
     dex : stx !maxtile_buffer_max+2
 else
     jsr get_free_slot
@@ -301,7 +319,11 @@ else
     phx
     txa : lsr #2 : tax
     sep #$20
+if !8x8_item_box_tile
     stz $0420|!addr,x
+else
+    lda #$02 : sta $0420|!addr,x
+endif
     plx
     inx #4
 endif
@@ -310,10 +332,17 @@ endif
     rts
 
 .pos:
-    db $00+!item_box_x_pos,$00+!item_box_y_pos
-    db $18+!item_box_x_pos,$00+!item_box_y_pos
+if !8x8_item_box_tile
     db $00+!item_box_x_pos,$08+!item_box_y_pos
     db $18+!item_box_x_pos,$08+!item_box_y_pos
+    db $00+!item_box_x_pos,$10+!item_box_y_pos
+    db $18+!item_box_x_pos,$10+!item_box_y_pos
+else
+    db $00+!item_box_x_pos,$00+!item_box_y_pos
+    db $10+!item_box_x_pos,$00+!item_box_y_pos
+    db $00+!item_box_x_pos,$10+!item_box_y_pos
+    db $10+!item_box_x_pos,$10+!item_box_y_pos
+endif
 
 .props:
     dw $0000,$4000,$8000,$C000
@@ -322,7 +351,7 @@ draw_timer:
     ; Draw the clock tile.
     ldy #$0000
     jsr .draw
-
+    
     ; Draw the first digit, unless it's 0.
     lda $0F31|!addr : bne +
     lda #$80 : ora !ram_timer+0 : sta !ram_timer+0

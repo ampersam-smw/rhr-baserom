@@ -25,14 +25,6 @@ handle_menu:
     jsr extra_prompt_exit
     plb : plp : ply
 
-    ; If applicable, decrement lives (if 0, we can't get here so we're safe).
-if not(!infinite_lives)
-    jsr shared_get_bitwise_mask
-    and.l tables_lose_lives,x : beq +
-    dec $0DBE|!addr
-+
-endif
-
     ; Set prompt phase to "shrinking with exit selected".
     lda !ram_prompt_phase : clc : adc #$03 : sta !ram_prompt_phase
 
