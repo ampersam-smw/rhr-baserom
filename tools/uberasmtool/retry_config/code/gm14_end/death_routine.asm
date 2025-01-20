@@ -25,6 +25,9 @@ endif
     ; If the reload level flag is set...
     lda !ram_is_dying : bit #$40 : beq .no_reload
 
+    ; Make sure Mario's animation timer is 0.
+    stz $1496|!addr
+
 .reload:
 if !title_death_behavior != 0
     ; (Check if we need to reload a level or the title screen)

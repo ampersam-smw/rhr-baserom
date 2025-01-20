@@ -240,7 +240,7 @@ endif
 get_sram_addr:
     rep #$30
     lda $010A|!addr : and #$00FF : asl : tax
-    lda.w .sram_addr,x
+    lda.l .sram_addr,x
     rts    
 
 .sram_addr:

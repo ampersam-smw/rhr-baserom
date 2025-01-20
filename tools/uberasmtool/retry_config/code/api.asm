@@ -174,15 +174,19 @@ get_retry_type:
 ;================================================
 get_sram_variable_address:
 if !sram_feature
+    phb
+    ; Set DBR equal to caller routine bank
+    sep #$30
+    lda $04,s : pha : plb
     ; Use Y to read address after the routine call
-    rep #$30 : ply
-    phb : phk : plb
+    rep #$30
+    lda $02,s : tay
     stz $00
     ldx #$0000
 .loop:
     ; Check if the current SRAM variables corresponds to the input
-    lda.w sram_tables_save+0,x : cmp $0001,y : bne .next
-    lda.w sram_tables_save+1,x : cmp $0002,y : bne .next
+    lda.l sram_tables_save+0,x : cmp $0001,y : bne .next
+    lda.l sram_tables_save+1,x : cmp $0002,y : bne .next
 .found:
     ; If so, add the calculated offset to the save file SRAM address
     jsr sram_get_sram_addr
@@ -194,7 +198,7 @@ if !sram_feature
     bra .return
 .next:
     ; Update the SRAM offset with the current variable size
-    lda.w sram_tables_save+3,x : clc : adc $00 : sta $00
+    lda.l sram_tables_save+3,x : clc : adc $00 : sta $00
     ; Go to the next SRAM variable
     txa : clc : adc #$0005
     ; If at the end of the SRAM table, end
@@ -207,8 +211,10 @@ if !sram_feature
 .return:
     plb
     ; Make sure the code returns at the right place
-    iny #3
-    phy : sep #$30
+    rep #$20
+    lda $01,s : inc #3 : sta $01,s
+    sep #$30
+    rtl
 else
     ; Make sure the code returns at the right place
     rep #$20
